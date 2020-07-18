@@ -1,9 +1,6 @@
 import React from 'react';
+import Routes from './routes';
 
-const App = () => (
-  <div className="App">
-    <h1>oi</h1>
-  </div>
-);
+const App = () => <Routes />;
 
 export default App;
