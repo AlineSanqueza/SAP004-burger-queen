@@ -1,14 +1,16 @@
 import React from 'react';
+import Login from './pages/Login/login.js'
+//import Register from './pages/Register/register.js';
+
 //import Routes from './routes';
 
 const App = () => {
     return (
     <div>
-    <h1> Teste</h1>
+    <Login />
     {/*<Routes />*/}
     </div>
     )
 }
-
 
 export default App;
