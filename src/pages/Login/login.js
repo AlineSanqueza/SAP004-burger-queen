@@ -16,8 +16,7 @@ export const Login = () => {
           <input className='input-password' placeholder='Senha'></input>
           <button className='btn-login font-enter'>Entrar</button>
           <div>
-            <button className='register' onClick={() => setPage('register') }>Não tem uma conta? Registre-se</button>
-            {page === 'register' ? <Route to='./pages/Register/register.js' /> : null }
+            <button className='register'>Não tem uma conta? Registre-se</button>
           </div>
           <footer>
             <p className='footer'>Desenvolvido por: Aline e Marcella</p>
