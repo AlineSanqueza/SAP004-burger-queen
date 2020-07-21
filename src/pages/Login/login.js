@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './index.css';
 import logo from '../images/logo-burger.png';
-import { Route } from 'react-router-dom';
 
 export const Login = () => {
-  const [page, setPage] = useState('');
+
     const[color] = React.useState('#FFF');
     React.useEffect(()=>{
         document.body.style.backgroundColor = color;
