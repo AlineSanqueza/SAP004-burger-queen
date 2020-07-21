@@ -1,15 +1,18 @@
-//import React from 'react'
-//import {BrowserRouter,Switch,Router} from 'react-router-dom';
-//import Record from './pages/Register/register.js'
-//export const Routes = () => {
-//    return (
-//        <BrowserRouter>
-//            <Switch>
-//                <Routes path="/register"  exact component={Record}/>
-//            </Switch>
-        
-//        </BrowserRouter>
-//    )
-//}
+import React from 'react'
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Login from './pages/Login/login.js';
+import Register from './pages/Register/register.js'
 
-//export default Routes;
+const Routes = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path = '/' component = {Login}/>
+        <Route path = 'register' component = {Register}/>
+      </Switch>
+    </BrowserRouter>
+    
+  );
+}
+
+export default Routes;
