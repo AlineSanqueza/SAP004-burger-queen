@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Newregister = () => {
+export const Paragraph = (props) => {
   return (
-    <h4>Não tem conta? Registre-se</h4>
-  )
+  <p className={props.style}>{props.children}</p>
+  );
 }
 
-export default Newregister;
+export default Paragraph;
