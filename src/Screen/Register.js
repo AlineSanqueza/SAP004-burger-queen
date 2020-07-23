@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
 
   p: {
     fontFamily: 'Spectral SC',
-   
     fontWeight: 'normal',
     fontSize: '20px',
     textDecoration: 'none',
