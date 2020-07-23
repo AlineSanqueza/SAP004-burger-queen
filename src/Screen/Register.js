@@ -18,7 +18,7 @@ const Register = () => {
         <Input style={css(styles.input)} title='Senha'/>
         <Select style={css(styles.select)}/>
         <Button style={css(styles.button)} children='Criar conta'/>
-        <Paragraph style={css(styles.p)}children='Já possui uma conta? Faça o login'/>
+        <Paragraph style={css(styles.p)} children='Já possui uma conta? Faça o login'/>
         <div>
           <Footer style={css(styles.footer)}/>
         </div>
@@ -38,18 +38,19 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     height: '100%',
-    color: '#37210D',
+    color: '#D97904',
     fontFamily: 'Spectral SC',
     fontWeight: 'bold',
     fontSize: '40px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    margin: '50px'
   },
 
   main: {
-    background: 'E5E5E5',
+    background: '#0D0D0D',
     width:'100%',
     height: '100%'
   },
@@ -60,14 +61,31 @@ const styles = StyleSheet.create({
     padding: '15px',
     margin: '0% 3% 2%',
     fontSize: '14px',
-    background: 'rgba(154, 93, 38, 0.70)'
+    background: '#F2F2F2',
+    borderStyle: 'none'
   },
+
+  select: {
+    color: '#686869',
+    width: '20%',
+    borderRadius: '10px',
+    height: '40px',
+    padding: '5px',
+    margin: '0% 3% 2%',
+    fontSize: '14px',
+    borderStyle: 'none'
+  },
+
   button: {
-    background: '#D96907',
-    borderRadius: '15px',
+    background: '#D97904',
+    borderRadius: '10px',
     width: '15%',
     margin: '0% 3% 2%',
-    padding:'10px'
+    padding:'10px',
+    color: '#F2F2F2',
+    fontSize: '14px',
+    borderStyle: 'none',
+    cursor: 'pointer'
   },
 
   form: {
@@ -81,52 +99,21 @@ const styles = StyleSheet.create({
     padding: '5px',
   },
 
-  select: {
-    color: '#9A5D26',
-    width: '20%',
-    borderRadius: '10px',
-    height: '40px',
-    padding: '5px',
-    margin: '0% 3% 2%'
-  },
-
   p: {
-    fontFamily: 'Alegreya Sans',
-    fontStyle: 'normal',
+    fontFamily: 'Spectral SC',
+   
     fontWeight: 'normal',
-    fontSize: '25px',
-    color: '#37210D'
-  },
+    fontSize: '20px',
+    textDecoration: 'none',
+    color: '#F2F2F2',
+    transition: '0.2s linear',
+    ':hover': {
+      color: '#D97904',
+      cursor: 'pointer'
+    }
+  }
 
-
-  /*select: {
-    color: '#9A5D26',
-    position: 'absolute',
-    width: '584px',
-    height: '140px',
-    left: '114px',
-    top: '739px',
-  },
-  
-  button: {
-    background: '#D96907',
-    borderRadius: 40px',
-    width: '35%',
-    margin: '0% 3% 2%',
-    padding:'2%
-  },
-
-  p: {
-    fontFamily: 'Alegreya Sans',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: '38px',
-    lineHeight: '46px',
-    letterSpacing: '0.02em',
-    color: '#37210D'
-  },
-
-  footer: {
+  /*footer: {
     width: '100%',
     backgroundColor: 'red',
     fontSize: '12px',
