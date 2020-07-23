@@ -1,6 +1,6 @@
 import React from 'react';
 import Input from '../components/Input';
-//import Logo from '../images/new-logo-burger.png'
+import Logo from '../images/new-logo-burger.png'
 import Button from '../components/Button';
 import Paragraph from '../components/Phrase';
 import Footer from '../components/Footer';
@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <main className={css(styles.main)}>
       <form className={css(styles.form)}>
-      {/*<img className={css(styles.image)} src={Logo}/>*/}
+      <img className={css(styles.image)} src={Logo}/>
         <Input style={css(styles.input)} title='E-mail'/>
         <Input style={css(styles.input)} title='Senha'/>
         <Button style={css(styles.button)} children='Login'/>
