@@ -36,8 +36,6 @@ const Register = () => {
 
 const styles = StyleSheet.create({
   header: {
-    width: '100%',
-    height: '100%',
     color: '#D97904',
     fontFamily: 'Spectral SC',
     fontWeight: 'bold',
@@ -46,13 +44,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '50px'
+    margin: '70px'
   },
 
   main: {
     background: '#0D0D0D',
     width:'100%',
-    height: '100%'
+    height: '100vh'
   },
 
   input: {
@@ -95,8 +93,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '10px',
-    padding: '5px',
+    padding: '5px'
   },
 
   p: {

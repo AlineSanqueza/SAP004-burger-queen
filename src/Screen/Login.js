@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../images/logo-burger-queen.png'
+import logo from '../images/new-logo-burger.png';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Paragraph from '../components/Phrase';
