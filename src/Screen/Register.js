@@ -3,6 +3,7 @@ import Input from '../components/Input';
 import Select from '../components/Select';
 import Button from '../components/Button';
 import Paragraph from '../components/Phrase';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -18,10 +19,12 @@ const Register = () => {
         <Input style={css(styles.input)} title='Senha'/>
         <Select style={css(styles.select)}/>
         <Button style={css(styles.button)} children='Criar conta'/>
-        <Paragraph style={css(styles.p)} children='Já possui uma conta? Faça o login'/>
-        <div>
+        <p className={css(styles.p)}>Já possui uma conta?
+          <Link to='login' className={css(styles.link)}> Faça o login</Link>
+        </p>
+        
           <Footer style={css(styles.footer)}/>
-        </div>
+        
       </form>
     </main>
     
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '70px'
+    margin: '40px'
   },
 
   main: {
@@ -91,18 +94,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     display:'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
     alignItems: 'center',
-    padding: '5px'
+    padding: '5px',
   },
 
   p: {
     fontFamily: 'Spectral SC',
     fontWeight: 'normal',
     fontSize: '20px',
+    color: '#F2F2F2',
+  },
+
+  link: {
+    fontFamily: 'Spectral SC',
+    fontWeight: 'normal',
+    fontSize: '20px',
     textDecoration: 'none',
     color: '#F2F2F2',
-    transition: '0.2s linear',
+    transition: '0.5s linear',
     ':hover': {
       color: '#D97904',
       cursor: 'pointer'
@@ -110,23 +119,13 @@ const styles = StyleSheet.create({
   },
 
   footer: {
-    marginTop: '70px',
-    width: '100%',
+    fontFamily: 'Spectral SC',
+    fontWeight: 'normal',
     fontSize: '14px',
     textAlign: 'center',
-    color:'#F2F2F2'
+    color: '#F2F2F2'
   }
 
 });
-
-
-
-
-
-
-
-
-
-
 
 export default Register;
