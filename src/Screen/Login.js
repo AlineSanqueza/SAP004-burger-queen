@@ -1,6 +1,6 @@
 import React from 'react';
+import Logo from '../images/new-logo-burger.png';
 import Input from '../components/Input';
-import Logo from '../images/new-logo-burger.png'
 import Button from '../components/Button';
 import Paragraph from '../components/Phrase';
 import Footer from '../components/Footer';
@@ -10,11 +10,11 @@ const Login = () => {
   return (
     <main className={css(styles.main)}>
       <form className={css(styles.form)}>
-      <img className={css(styles.image)} src={Logo}/>
+      <img className={css(styles.image)} src={Logo} alt='burger logo'/>
         <Input style={css(styles.input)} title='E-mail'/>
         <Input style={css(styles.input)} title='Senha'/>
         <Button style={css(styles.button)} children='Login'/>
-        <Paragraph style={css(styles.p)} children='Já possui uma conta? Faça o login'/>
+        <Paragraph style={css(styles.p)} children='Não possui uma conta? Registre-se'/>
         <div>
           <Footer style={css(styles.footer)}/>
         </div>
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '10px',
     padding: '5px',
   },
 
@@ -76,14 +75,15 @@ const styles = StyleSheet.create({
       color: '#D97904',
       cursor: 'pointer'
     }
-  }
+  },
 
-  /*footer: {
+  footer: {
+    marginTop: '70px',
     width: '100%',
-    backgroundColor: 'red',
-    fontSize: '12px',
-    textAlign: 'center'
-  }*/
+    fontSize: '14px',
+    textAlign: 'center',
+    color:'#F2F2F2'
+  }
 
 });
 

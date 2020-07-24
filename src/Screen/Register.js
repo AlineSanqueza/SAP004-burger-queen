@@ -107,14 +107,15 @@ const styles = StyleSheet.create({
       color: '#D97904',
       cursor: 'pointer'
     }
-  }
+  },
 
-  /*footer: {
+  footer: {
+    marginTop: '70px',
     width: '100%',
-    backgroundColor: 'red',
-    fontSize: '12px',
-    textAlign: 'center'
-  }*/
+    fontSize: '14px',
+    textAlign: 'center',
+    color:'#F2F2F2'
+  }
 
 });
 

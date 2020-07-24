@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const Footer = () => {
+export const Footer = (props) => {
   return (
-    <Footer children='Desenvolvido por Aline e Marcela'/>
+    <footer className={props.style}>Desenvolvido por Aline e Marcela</footer>
   );
 }
 
