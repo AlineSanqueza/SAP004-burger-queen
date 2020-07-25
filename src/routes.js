@@ -1,15 +1,18 @@
-import React from 'react'
-import {BrowserRouter,Route,Switch} from 'react-router-dom'
-import Login from '../src/Screen/Login'
-import Register from '../src/Screen/Register'
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Login from './screen/Login';
+import Register from './screen/Register';
+//import Private from './private';
+import Kitchen from './screen/Kitchen';
+
 const Routes = () => {
-    return(
-        <BrowserRouter>
-            <Switch>
-                <Route path='/' component={Login} exact />
-                <Route path='/Register' component={Register}/>
-                </Switch>
-        </BrowserRouter>
-    )
+  return (
+    <Switch>
+      <Route exact path='/' component={Login}/>
+      <Route path='/register'component={Register}/>  
+      <Route path='/kitchen' component={Kitchen}/>
+    </Switch>
+  );
+
 }
 export default Routes;

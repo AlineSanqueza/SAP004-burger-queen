@@ -1,35 +1,83 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Input from '../components/Input';
-import Select from '../components/Select';
+import Password from '../components/Password';
+//import Select from '../components/Select';
 import Button from '../components/Button';
 import Paragraph from '../components/Phrase';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+//import { useHistory } from 'react-router-dom';
+import firebase from 'firebase/app'
 import { StyleSheet, css } from 'aphrodite';
 
 const Register = () => {
+  //const history = useHistory();
+  const [user, setUser] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  //const [workplace, setWorkplace] = useState('');
+
+  const register = () => {
+    if (user.value === '' || email.value === '' || password.value === '' ) {
+      alert('Verifique se os campos estão preenchidos corretamente');
+    } else {
+      firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
+        firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid)
+        .set({
+          name: user,
+          email: email,
+          password: password,
+          userId: firebase.auth().currentUser.uid
+        })/*.then(() =>{
+          if (workplace.value === 'Cozinheiro') {
+            history.push('/kitchen')
+            alert('olar vc ta na cozinha')
+          } else {
+            history.push('/saloon')
+            alert('oi vc ta no salão')
+          }
+        })*/
+        .catch((error) => {
+          const errorCode = error.code
+          if (errorCode ==='auth/email-already-in-use') {
+            alert('conta já existe')
+          } else if (errorCode === 'auth/invalid-email') {
+            alert('email invalido')
+          } else if (errorCode === "auth/weak-password") {
+            alert('senha pequena')
+          } else {
+            alert('te vira')
+          }
+        })
+
+      }
+      
+    }
+  
   return (
     <main className={css(styles.main)}>
       <form className={css(styles.form)}>
         <header className={css(styles.header)}>
           <Paragraph children='Registro'/>
         </header>
-        <Input style={css(styles.input)} title='Nome Completo'/>
-        <Input style={css(styles.input)} title='E-mail'/>
-        <Input style={css(styles.input)} title='Senha'/>
-        <Select style={css(styles.select)}/>
-        <Button style={css(styles.button)} children='Criar conta'/>
+        <Input style={css(styles.input)} title='Nome Completo' onChange={(e) => setUser(e.target.value)}/>
+        <Input style={css(styles.input)} title='E-mail'onChange={(e) => setEmail(e.target.value)}/>
+        <Password style={css(styles.input)} title='Senha' onChange={(e) => setPassword(e.target.value)}/>
+        {/*<Select style={css(styles.select)} onChange={(e) => setWorkplace(e.target.value)}/>*/}
+        <Button style={css(styles.button)} onClick={(e) => {register(); e.preventDefault()}} children='Criar conta'/>
         <p className={css(styles.p)}>Já possui uma conta?
           <Link to='/' className={css(styles.link)}> Faça o login</Link>
         </p>
-        
+    
           <Footer style={css(styles.footer)}/>
         
       </form>
     </main>
-    
   );
-}
+};
+  
+
+
 /*const font = {
   fontFamily: 'Spectral SC',
   fontStyle: 'normal',
@@ -125,7 +173,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#F2F2F2'
   }
-
 });
 
 export default Register;
