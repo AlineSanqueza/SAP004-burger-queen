@@ -20,7 +20,7 @@ const Register = () => {
         <Select style={css(styles.select)}/>
         <Button style={css(styles.button)} children='Criar conta'/>
         <p className={css(styles.p)}>Já possui uma conta?
-          <Link to='login' className={css(styles.link)}> Faça o login</Link>
+          <Link to='/' className={css(styles.link)}> Faça o login</Link>
         </p>
         
           <Footer style={css(styles.footer)}/>
