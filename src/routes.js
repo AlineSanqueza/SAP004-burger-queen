@@ -5,7 +5,6 @@ import Register from './screen/Register';
 //import Private from './private';
 import Kitchen from './screen/Kitchen';
 
-
 const Routes = () => {
   return (
     <Switch>
@@ -14,6 +13,6 @@ const Routes = () => {
       <Route path='/kitchen' component={Kitchen}/>
     </Switch>
   );
-}
 
+}
 export default Routes;
