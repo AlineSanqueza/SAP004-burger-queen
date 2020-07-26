@@ -1,12 +1,12 @@
 import React from 'react';
 import Paragraph from '../components/Phrase';
 
-const Kitchen = () =>{
+const Saloon = () =>{
   return (
     <header>
-      <Paragraph children='Vc está na cozinha'/>
+      <Paragraph children='Vc está no salão'/>
     </header>
   );
 }
 
-export default Kitchen;
+export default Saloon;

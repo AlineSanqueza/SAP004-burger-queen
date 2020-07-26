@@ -4,8 +4,8 @@ const Select = (props) => {
   return (
     <select className={props.style} onChange={props.onChange} defaultValue='occupation'>
       <option value='occupation' disabled> Sua ocupação </option>
-      <option value='kitchen'> Cozinheiro </option>
-      <option value='saloon'> Garçom </option>
+      <option value='true'> Cozinheiro </option>
+      <option value='false'> Garçom </option>
     </select>
     /*<label>
       <input type='radio' value='kitchen'> Cozinheiro </input>

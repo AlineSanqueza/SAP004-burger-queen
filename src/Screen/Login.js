@@ -2,7 +2,7 @@ import React from 'react';
 import Input from '../components/Input';
 import Logo from '../images/new-logo-burger.png'
 import Button from '../components/Button';
-import Paragraph from '../components/Phrase';
+import Password from '../components/Password';
 import Footer from '../components/Footer';
 import { StyleSheet, css } from 'aphrodite';
 import {Link} from 'react-router-dom'
@@ -11,12 +11,12 @@ const Login = () => {
   return (
     <main className={css(styles.main)}>
       <form className={css(styles.form)}>
-      <img src={Logo}/>
+      <img className={css(styles.img)} src={Logo} alt='burger logo'/>
         <Input style={css(styles.input)} title='E-mail'/>
-        <Input style={css(styles.input)} title='Senha'/>
+        <Password style={css(styles.input)} title='Senha'/>
         <Button style={css(styles.button)} children='Login'/>
         <p className={css(styles.p)}> Não possui conta?
-        <Link to='/Register' className={css(styles.link)}>Registre-se</Link>
+        <Link to='/register' className={css(styles.link)}> Registre-se</Link>
         </p>
         <Footer style={css(styles.footer)}/>
       </form>
@@ -35,6 +35,11 @@ const styles = StyleSheet.create({
     width:'100%',
     height: '100vh'
   },
+
+  img: {
+    margin: '40px'
+  },
+
   input: {
     borderRadius: '10px',
     width: '30%',

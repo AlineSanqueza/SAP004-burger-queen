@@ -4,6 +4,7 @@ import Login from './screen/Login';
 import Register from './screen/Register';
 //import Private from './private';
 import Kitchen from './screen/Kitchen';
+import Saloon from './screen/Saloon';
 
 const Routes = () => {
   return (
@@ -11,6 +12,7 @@ const Routes = () => {
       <Route exact path='/' component={Login}/>
       <Route path='/register'component={Register}/>  
       <Route path='/kitchen' component={Kitchen}/>
+      <Route path='/saloon' component={Saloon}/>
     </Switch>
   );
 
