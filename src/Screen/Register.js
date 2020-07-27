@@ -8,23 +8,22 @@ import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import firebase from 'firebase';
 import { StyleSheet, css } from 'aphrodite';
-//import iziToast from 'izitoast';
 
 const Register = () => {
   const history = useHistory();
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [workplace, setWorkplace] = useState('kitchen');
-  
-  function signUp() {
+  const [workplace, setWorkplace] = useState('');
+
+  const register = () => {
     if (!user || !email || !password || !workplace) {
-      alert('preencher')
-  } else {
+      alert('Verifique se todos os campos estão preenchidos');
+    } else {
       firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      //.then(() => {
         firebase
         .firestore()
         .collection('users')
@@ -33,53 +32,45 @@ const Register = () => {
           name: user,
           email: email,
           password: password,
+          workplace: workplace,
           userId: firebase.auth().currentUser.uid
-      })
-    }).then(() => {
-      if (workplace === 'true') {
-        history.push('/kitchen')
-        alert('olar vc ta na cozinha')
-    } else {
-        history.push('/saloon')
-        alert('oi vc ta no salão')
+        })
+      //})
+        .then(() => {
+          if (workplace === 'true') {
+            history.push('/kitchen');
+            alert('olar vc ta na cozinha');
+          } else {
+            history.push('/saloon');
+            alert('oi vc ta no salão');
+          }
+        })
+        .catch((error) => {
+          const errorCode = error.code
+          if (errorCode ==='auth/email-already-in-use') {
+            alert('conta já existe');
+          } else if (errorCode === 'auth/invalid-email') {
+            alert('email invalido');
+          } else if (errorCode === 'auth/weak-password') {
+            alert('senha fraca');
+          } else {
+            alert('te vira');
+          }
+        });
+      }
     }
-  })
-  .catch((error) => {
-    const errorCode = error.code
-    if (errorCode ==='auth/email-already-in-use') {
-      alert('conta já existe')
-    } else if (errorCode === 'auth/invalid-email') {
-      alert('email invalido')
-    } else if (errorCode === "auth/weak-password") {
-      alert('senha fraca')
-    } 
-  })
-}
+  
   return (
     <main className={css(styles.main)}>
       <form className={css(styles.form)}>
         <header className={css(styles.header)}>
           <Paragraph children='Registro'/>
         </header>
-        <Input 
-        style={css(styles.input)} 
-        title='Nome Completo' 
-        onChange={(e) => setUser(e.target.value)}
-        />
-        <Input 
-        style={css(styles.input)} 
-        title='E-mail'onChange={(e) => setEmail(e.target.value)}
-        />
-        <Password 
-        style={css(styles.input)} 
-        title='Senha' 
-        onChange={(e) => setPassword(e.target.value)}
-        />
-        <Select 
-        style={css(styles.select)} 
-        onChange={(e) => setWorkplace(e.target.value)}
-        />
-        <Button handleClick={() => signUp()} style={css(styles.button)} children='Criar conta' />
+        <Input style={css(styles.input)} title='Nome Completo' onChange={(e) => setUser(e.target.value)}/>
+        <Input style={css(styles.input)} title='E-mail'onChange={(e) => setEmail(e.target.value)}/>
+        <Password style={css(styles.input)} title='Senha' onChange={(e) => setPassword(e.target.value)}/>
+        <Select style={css(styles.select)} onChange={(e) => setWorkplace(e.target.value)}/>
+        <Button style={css(styles.button)} onClick={(e) => {register(); e.preventDefault()}} children='Criar conta'/>
         <p className={css(styles.p)}>Já possui uma conta?
           <Link to='/' className={css(styles.link)}> Faça o login</Link>
         </p>
@@ -88,7 +79,6 @@ const Register = () => {
     </main>
   );
 }
-}
 
 const styles = StyleSheet.create({
   header: {
@@ -96,6 +86,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Spectral SC',
     fontWeight: 'bold',
     fontSize: '40px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     margin: '40px'
   },
   main: {

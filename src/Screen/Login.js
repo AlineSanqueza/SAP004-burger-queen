@@ -1,11 +1,11 @@
 import React from 'react';
 import Input from '../components/Input';
-import Logo from '../images/new-logo-burger.png'
+import Logo from '../images/new-logo-burger.png';
 import Button from '../components/Button';
 import Password from '../components/Password';
 import Footer from '../components/Footer';
 import { StyleSheet, css } from 'aphrodite';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 //import { queries } from '@testing-library/react';
 const Login = () => {
   return (
