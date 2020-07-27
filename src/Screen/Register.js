@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Input from '../components/Input';
 import Password from '../components/Password';
 import Select from '../components/Select';
@@ -23,7 +23,7 @@ const Register = () => {
       firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      //.then(() => {
+      .then(() => {
         firebase
         .firestore()
         .collection('users')
@@ -35,7 +35,7 @@ const Register = () => {
           workplace: workplace,
           userId: firebase.auth().currentUser.uid
         })
-      //})
+      })
         .then(() => {
           if (workplace === 'true') {
             history.push('/kitchen');
@@ -59,6 +59,7 @@ const Register = () => {
         });
       }
     }
+    useEffect(() => {console.log(user, email, password, workplace)}, [user, email, password, workplace])
   
   return (
     <main className={css(styles.main)}>
