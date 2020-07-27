@@ -71,7 +71,7 @@ const Register = () => {
         <Input style={css(styles.input)} title='E-mail'onChange={(e) => setEmail(e.target.value)}/>
         <Password style={css(styles.input)} title='Senha' onChange={(e) => setPassword(e.target.value)}/>
         <Select style={css(styles.select)} onChange={(e) => setWorkplace(e.target.value)}/>
-        <Button style={css(styles.button)} onClick={(e) => {register(); e.preventDefault()}} children='Criar conta'/>
+        <Button style={css(styles.button)} onClick={register} children='Criar conta'/>
         <p className={css(styles.p)}>Já possui uma conta?
           <Link to='/' className={css(styles.link)}> Faça o login</Link>
         </p>
