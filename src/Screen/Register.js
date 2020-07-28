@@ -7,6 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import firebase from '../firebase';
 import { StyleSheet, css } from 'aphrodite';
+import Swal  from 'sweetalert2';
 
 const Register = () => {
   const history = useHistory();
@@ -17,7 +18,12 @@ const Register = () => {
 
   const register = () => {
     if (!user || !email || !password || !workplace) {
-      alert('Verifique se todos os campos estão preenchidos');
+      Swal.fire({
+        title: 'Atenção',
+        text: 'Verifique se todos os campos estão preenchidos',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
     } else {
     firebase
       .auth()
@@ -45,16 +51,35 @@ const Register = () => {
         .catch((error) => {
           const err = error.code
           if (err ==='auth/email-already-in-use') {
-            alert('conta já existe');
+            Swal.fire({
+              title: 'Ops...',
+              text: 'Essa conta já existe',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            })
           } else if (err === 'auth/invalid-email') {
-            alert('email invalido');
+            Swal.fire({
+              title: 'Ops...',
+              text: 'E-mail inválido',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            })
           } else if (err === 'auth/weak-password') {
-            alert('senha fraca');
+            Swal.fire({
+              title: 'Ops...',
+              text: 'Senha muito fraca',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            })
           } else {
-            alert('putz');
+            Swal.fire({
+              title: 'Ops...',
+              text: 'Algo deu errado. Tente novamente',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
           }
         });
-      
     }
   }
 
