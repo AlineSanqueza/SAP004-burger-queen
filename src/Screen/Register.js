@@ -1,12 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import Input from '../components/Input';
-import Password from '../components/Password';
 import Select from '../components/Select';
 import Button from '../components/Button';
 import Paragraph from '../components/Phrase';
 import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
-import firebase from 'firebase';
+import firebase from '../firebase';
 import { StyleSheet, css } from 'aphrodite';
 
 const Register = () => {
@@ -20,7 +19,7 @@ const Register = () => {
     if (!user || !email || !password || !workplace) {
       alert('Verifique se todos os campos estão preenchidos');
     } else {
-      firebase
+    firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
@@ -33,45 +32,43 @@ const Register = () => {
           email: email,
           password: password,
           workplace: workplace,
-          userId: firebase.auth().currentUser.uid
+          user_id: firebase.auth().currentUser.uid
         })
       })
         .then(() => {
           if (workplace === 'true') {
             history.push('/kitchen');
-            alert('olar vc ta na cozinha');
           } else {
             history.push('/saloon');
-            alert('oi vc ta no salão');
           }
         })
         .catch((error) => {
-          const errorCode = error.code
-          if (errorCode ==='auth/email-already-in-use') {
+          const err = error.code
+          if (err ==='auth/email-already-in-use') {
             alert('conta já existe');
-          } else if (errorCode === 'auth/invalid-email') {
+          } else if (err === 'auth/invalid-email') {
             alert('email invalido');
-          } else if (errorCode === 'auth/weak-password') {
+          } else if (err === 'auth/weak-password') {
             alert('senha fraca');
           } else {
-            alert('te vira');
+            alert('putz');
           }
         });
-      }
+      
     }
-    useEffect(() => {console.log(user, email, password, workplace)}, [user, email, password, workplace])
-  
+  }
+
   return (
     <main className={css(styles.main)}>
       <form className={css(styles.form)}>
         <header className={css(styles.header)}>
           <Paragraph children='Registro'/>
         </header>
-        <Input style={css(styles.input)} title='Nome Completo' onChange={(e) => setUser(e.target.value)}/>
-        <Input style={css(styles.input)} title='E-mail'onChange={(e) => setEmail(e.target.value)}/>
-        <Password style={css(styles.input)} title='Senha' onChange={(e) => setPassword(e.target.value)}/>
+        <Input style={css(styles.input)} type='text' title='Nome Completo' onChange={(e) => setUser(e.target.value)}/>
+        <Input style={css(styles.input)} type='e-mail' title='E-mail'onChange={(e) => setEmail(e.target.value)}/>
+        <Input style={css(styles.input)} type='password' title='Senha' onChange={(e) => setPassword(e.target.value)}/>
         <Select style={css(styles.select)} onChange={(e) => setWorkplace(e.target.value)}/>
-        <Button style={css(styles.button)} onClick={register} children='Criar conta'/>
+        <Button style={css(styles.button)} onClick={(e) => {e.preventDefault(); register()}} children='Criar conta'/>
         <p className={css(styles.p)}>Já possui uma conta?
           <Link to='/' className={css(styles.link)}> Faça o login</Link>
         </p>

@@ -2,7 +2,6 @@ import React from 'react';
 import Input from '../components/Input';
 import Logo from '../images/new-logo-burger.png';
 import Button from '../components/Button';
-import Password from '../components/Password';
 import Footer from '../components/Footer';
 import { StyleSheet, css } from 'aphrodite';
 import { Link } from 'react-router-dom';
@@ -12,8 +11,8 @@ const Login = () => {
     <main className={css(styles.main)}>
       <form className={css(styles.form)}>
       <img className={css(styles.img)} src={Logo} alt='burger logo'/>
-        <Input style={css(styles.input)} title='E-mail'/>
-        <Password style={css(styles.input)} title='Senha'/>
+        <Input style={css(styles.input)} type='e-mail' title='E-mail'/>
+        <Input style={css(styles.input)} type='password' title='Senha'/>
         <Button style={css(styles.button)} children='Login'/>
         <p className={css(styles.p)}> Não possui conta?
         <Link to='/register' className={css(styles.link)}> Registre-se</Link>
