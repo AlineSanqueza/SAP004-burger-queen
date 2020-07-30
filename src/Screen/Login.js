@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import Input from '../components/Input';
 import Logo from '../images/new-logo-burger.png';
 import Button from '../components/Button';
@@ -9,47 +9,45 @@ import { Link,useHistory } from 'react-router-dom';
 
 //import { queries } from '@testing-library/react';
 const Login = () => {
-    const history = useHistory();
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
+  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-
-    const login = () => {
-        if (!email || !password){
-            alert('Verifique se todos os campos estão preenchidos');
-        } else{
-            //firebase.auth()
-            firebase
-            .auth()
-           .signInWithEmailAndPassword(email,password)
-           .then((user_id)=>{
-               firebase
-               .firestore()
-               .collection('users')
-               .doc(user_id.user.uid)
-               .get()
-               .then((doc) =>{
-                   if(doc.data().workplace === 'true'){
-                       history.push('/kitchen');
-                   }else {
-                        history.push('/saloon');
-                   }
-                   })
-                   .catch((error) => {
-                    const err = error.code
-                    if (err ==='auth/email-already-in-use') {
-                      alert('conta já existe');
-                    } else if (err === 'auth/invalid-email') {
-                      alert('email invalido');
-                    } else if (err === 'auth/weak-password') {
-                      alert('senha fraca');
-                    } else {
-                      alert('putz');
-                    }
-                  });
-               })
-            }
-        }
+  const login = () => {
+    if (!email || !password) {
+      alert('Verifique se todos os campos estão preenchidos');
+    } else {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((user_id) => {
+        firebase
+        .firestore()
+        .collection('users')
+        .doc(user_id.user.uid)
+        .get()
+        .then((doc) => {
+          if(doc.data().workplace === 'true'){
+            history.push('/kitchen');
+          } else {
+            history.push('/saloon');
+          }
+        })
+        .catch((error) => {
+          const err = error.code
+          if (err ==='auth/email-already-in-use') {
+            alert('conta já existe');
+          } else if (err === 'auth/invalid-email') {
+            alert('email invalido');
+          } else if (err === 'auth/weak-password') {
+            alert('senha fraca');
+          } else {
+            alert('putz');
+          }
+        });
+      });
+    }
+  }
   return (
     <main className={css(styles.main)}>
       <form className={css(styles.form)}>
@@ -65,7 +63,6 @@ const Login = () => {
     </main>
   );
   }
-    
 
 const styles = StyleSheet.create({
   main: {
@@ -73,11 +70,9 @@ const styles = StyleSheet.create({
     width:'100%',
     height: '100vh'
   },
-
   img: {
     margin: '40px'
   },
-
   input: {
     borderRadius: '10px',
     width: '30%',
@@ -128,26 +123,25 @@ const styles = StyleSheet.create({
     //transition: '0.2s linear',
     //  }
   },
-    link: {
-        fontFamily: 'Spectral SC',
-        fontWeight: 'normal',
-        fontSize: '20px',
-        textDecoration: 'none',
-        color: '#F2F2F2',
-        transition: '0.5s linear',
-        ':hover': {
-          color: '#D97904',
-          cursor: 'pointer'
-        }
-      },
-    footer: {
-        fontFamily: 'Spectral SC',
-        fontWeight: 'normal',
-        fontSize: '14px',
-        textAlign: 'center',
-        color: '#F2F2F2'
+  link: {
+    fontFamily: 'Spectral SC',
+    fontWeight: 'normal',
+    fontSize: '20px',
+    textDecoration: 'none',
+    color: '#F2F2F2',
+    transition: '0.5s linear',
+    ':hover': {
+      color: '#D97904',
+      cursor: 'pointer'
     }
+  },
+    footer: {
+    fontFamily: 'Spectral SC',
+    fontWeight: 'normal',
+    fontSize: '14px',
+    textAlign: 'center',
+    color: '#F2F2F2'
+  }
 });
-
 
 export default Login;
