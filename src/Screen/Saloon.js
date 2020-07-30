@@ -14,15 +14,19 @@ const Saloon = () => {
       </div>
       <div className={css(styles.containerOrder)}>
         <p className={css(styles.p)}>Resumo do pedido</p>
-        <Input style={css(styles.input)} type='text' title='Cliente'/>
-        <Input style={css(styles.input)} type='number' title='Mesa'/>
+        <div className={css(styles.position)}>
+          <Input style={css(styles.input)} type='text' title='Cliente'/>
+          <Input style={css(styles.input)} type='number' title='Mesa'/>
+        </div>
           <>
             <div className={css(styles.order)}> Qtd:
-              <Button children='🗑️'/>
+              <Button style={css(styles.delete)} children='🗑️'/>
             </div>
           </>
-          <p className={css(styles.p)}>Total: R$,00</p>
-          <Button style={css(styles.send)} children='Enviar'/>
+          <div className={css(styles.position)}>
+            <p className={css(styles.p)}>Total: R$,00</p>
+            <Button style={css(styles.send)} children='Enviar pedido'/>
+          </div>
       </div>
     </main>
   );
@@ -57,42 +61,63 @@ const styles = StyleSheet.create({
     }
   },
   p: {
-    fontSize: '15px',
-    color: '#F2F2F2',
+    fontSize: '20px',
+    color: 'black',
+    padding: '10px'
   },
   input: {
-    borderRadius: '10px',
-    width: '15%',
+    /*borderRadius: '6px',
+    width: '170px',
+    height: '35px',
+    textAlign: 'center',*/
+    borderRadius: '5px',
+    width: '40%',
     padding: '10px',
-    margin: '0% 3% 2%',
     fontSize: '14px',
     background: '#F2F2F2',
     borderStyle: 'none'
   },
-  send:{
-    background: 'F2F2F2',
-    color: '#0D0D0D',
-    padding: '15px',
+  order: {
+    fontSize: '20px'
+  },
+  position: {
+    display: 'flex',
+    justifyContent: 'space-evenly'
+  },
+  delete: {
+    borderStyle: 'none',
+    backgroundColor: 'transparent',
+  },
+  send: {
+    background: '#D97904',
+    color: '#F2F2F2',
     borderRadius: '5px',
-    fontSize: '14px',
+    height: '40px',
+    fontSize: '15px',
     borderStyle: 'none',
     cursor: 'pointer',
-    ':active': {
-    background: '#D97904',
-    }
+    margin: '25px'
 },
   containerOrder: {
-    background: 'tomato',
+    marginTop: '10%',
+    background: '#ccc',
+    width: '35%',
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: '10px',
+    marginLeft: '60%',
+    alignItems: 'center',
+
+    /*background: 'tomato',
     alignItems: 'center',
     flexDirection: 'column',
-    width: '50%',
+    width: '30%',
     display: 'flex',
-    borderRadius: '10px'
+    borderRadius: '5px'*/
   },
   menu: {
     background: 'grey'
   },
-
-})
+});
 
 export default Saloon;
