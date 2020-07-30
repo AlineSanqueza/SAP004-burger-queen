@@ -6,6 +6,7 @@ import { StyleSheet, css } from 'aphrodite';
 const Nav = (props) => {
   return (
     <header className={css(styles.header)}>
+
       <img className={css(styles.img)} src={Logo} alt='burger logo'/>
       <nav className={css(styles.nav)}>
         <ul>
@@ -13,18 +14,20 @@ const Nav = (props) => {
             <Link to='/' className={css(styles.link)} onClick={props.onClick}>Sair</Link>
           </li>
         </ul>
+       
       </nav>
     </header>
   );
 }
 
 const styles = StyleSheet.create({
+
   header: {
     display: 'flex',
     justifyContent: 'space-between'
   },
   nav: {
-    background: 'red',
+    background: '0D0D0D',
   },
   li: {
     listStyle: 'none',
@@ -43,7 +46,8 @@ const styles = StyleSheet.create({
     }
   },
   img: {
-    background: 'pink'
+      width: '150px',
+      height: '80px'
   }
 });
 

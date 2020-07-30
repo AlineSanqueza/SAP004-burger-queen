@@ -48,13 +48,19 @@ const styles = StyleSheet.create({
     top: '0',
     width: '100%'
   },
+
+  menu: {
+      display: 'flex',
+    alignItems: 'center',
+  },
   button: {
     background: 'F2F2F2',
-    color: '#0D0D0D',
     padding: '15px',
     borderRadius: '5px',
     fontSize: '14px',
     borderStyle: 'none',
+    
+   
     cursor: 'pointer',
     ':active': {
     background: '#D97904',
@@ -115,9 +121,5 @@ const styles = StyleSheet.create({
     display: 'flex',
     borderRadius: '5px'*/
   },
-  menu: {
-    background: 'grey'
-  },
-});
-
+  })
 export default Saloon;
