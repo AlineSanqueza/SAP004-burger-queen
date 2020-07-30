@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import { StyleSheet, css } from 'aphrodite';
 import firebase from '../firebase';
 import { Link,useHistory } from 'react-router-dom';
-
+import Swal  from 'sweetalert2';
 //import { queries } from '@testing-library/react';
 const Login = () => {
   const history = useHistory();
@@ -15,7 +15,12 @@ const Login = () => {
 
   const login = () => {
     if (!email || !password) {
-      alert('Verifique se todos os campos estão preenchidos');
+        Swal.fire({
+            title: 'Atenção',
+            text: 'Verifique se todos os campos estão preenchidos',
+            icon: 'warning',
+            confirmButtonText: 'OK'
+          })
     } else {
     firebase
       .auth()
@@ -35,10 +40,13 @@ const Login = () => {
         })
         .catch((error) => {
           const err = error.code
-          if (err ==='auth/email-already-in-use') {
-            alert('conta já existe');
-          } else if (err === 'auth/invalid-email') {
-            alert('email invalido');
+          if (err =='auth/invalid-email') {
+            Swal.fire({
+                title: 'Ops...',
+                text: 'E-mail inválido',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              })
           } else if (err === 'auth/weak-password') {
             alert('senha fraca');
           } else {
@@ -71,7 +79,7 @@ const styles = StyleSheet.create({
     height: '100vh'
   },
   img: {
-    margin: '40px'
+    margin: '40px',
   },
   input: {
     borderRadius: '10px',
@@ -80,12 +88,12 @@ const styles = StyleSheet.create({
     margin: '0% 3% 2%',
     fontSize: '14px',
     background: '#F2F2F2',
-    borderStyle: 'none'
-//    "@media (max-width: 360px)": {
-//        width: "50vw",
-//        height: "4vh",
-//        fontSize: '34px',
-//      }
+    borderStyle: 'none',
+    "@media (min-width: 360px)": {
+        width: "250px",
+        height: "30px",
+        fontSize: '24px',
+      }
   },
   button: {
     background: '#D97904',
@@ -96,12 +104,12 @@ const styles = StyleSheet.create({
     color: '#F2F2F2',
     fontSize: '14px',
     borderStyle: 'none',
-    cursor: 'pointer'
-    //"@media (max-width: 360px)": {
-    //    width: "35vw",
-    //    height: "5vh",
-    //    fontSize: '40px',
-    //  }
+    cursor: 'pointer',
+    "@media (max-width: 360px)": {
+        width: "200px",
+        height: "50px",
+        fontSize: '24px',
+      }
   },
   form: {
     fontSize: '18px',
@@ -117,11 +125,11 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     fontSize: '20px',
     color: '#F2F2F2',
-     //  "@media (min-width: 360px)": {
-    //    fontSize: '20%',
-    //    color: '#F2F2F2',
-    //transition: '0.2s linear',
-    //  }
+       "@media (min-width: 360px)": {
+        fontSize: '24px',
+        color: '#F2F2F2',
+         transition: '0.2s linear',
+      }
   },
   link: {
     fontFamily: 'Spectral SC',
@@ -133,8 +141,17 @@ const styles = StyleSheet.create({
     ':hover': {
       color: '#D97904',
       cursor: 'pointer'
-    }
-  },
+    },
+    "@media (min-width: 360px)": {
+        fontSize: '24px',
+        color: '#F2F2F2',
+         transition: '0.2s linear',
+         ':hover': {
+            color: '#D97904',
+            cursor: 'pointer'
+          },
+      }
+},
     footer: {
     fontFamily: 'Spectral SC',
     fontWeight: 'normal',

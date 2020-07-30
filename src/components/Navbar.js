@@ -5,22 +5,29 @@ import { StyleSheet, css } from 'aphrodite';
 
 const Nav = (props) => {
   return (
-    <header>
+    <header className={css(styles.header)}>
+         <img className={css(styles.img)} src={Logo} alt='burger logo'/>
       <nav className={css(styles.nav)}>
         <ul>
           <li className={css(styles.li)}>
             <Link to='/' className={css(styles.link)} onClick={props.onClick}>Sair</Link>
           </li>
         </ul>
+       
       </nav>
-        <img className={css(styles.img)} src={Logo} alt='burger logo'/>
+        
     </header>
   );
 }
 
 const styles = StyleSheet.create({
+    header:{
+        display: 'flex',
+        justifyContent:'space-between'
+    },
+
   nav: {
-    background: 'red'
+    background: '0D0D0D'
   },
   li: {
     listStyle: 'none',
@@ -38,7 +45,8 @@ const styles = StyleSheet.create({
     }
   },
   img: {
-    background: 'pink'
+      width: '150px',
+      height: '80px'
   }
   
 })

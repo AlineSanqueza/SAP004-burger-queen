@@ -44,13 +44,19 @@ const styles = StyleSheet.create({
     top: '0',
     width: '100%'
   },
+
+  menu: {
+      display: 'flex',
+    alignItems: 'center',
+  },
   button: {
     background: 'F2F2F2',
-    color: '#0D0D0D',
     padding: '15px',
     borderRadius: '5px',
     fontSize: '14px',
     borderStyle: 'none',
+    
+   
     cursor: 'pointer',
     ':active': {
     background: '#D97904',
@@ -88,9 +94,6 @@ const styles = StyleSheet.create({
     width: '50%',
     display: 'flex',
     borderRadius: '10px'
-  },
-  menu: {
-    background: 'grey'
   },
 
 })
