@@ -40,7 +40,7 @@ const Login = () => {
         })
         .catch((error) => {
           const err = error.code
-          if (err =='auth/invalid-email') {
+          if (err === 'auth/invalid-email') {
             Swal.fire({
                 title: 'Ops...',
                 text: 'E-mail inválido',
@@ -89,11 +89,11 @@ const styles = StyleSheet.create({
     fontSize: '14px',
     background: '#F2F2F2',
     borderStyle: 'none',
-    "@media (min-width: 360px)": {
+    /*"@media (min-width: 360px)": {
         width: "250px",
         height: "30px",
         fontSize: '24px',
-      }
+      }*/
   },
   button: {
     background: '#D97904',
@@ -105,11 +105,11 @@ const styles = StyleSheet.create({
     fontSize: '14px',
     borderStyle: 'none',
     cursor: 'pointer',
-    "@media (max-width: 360px)": {
+    /*"@media (max-width: 360px)": {
         width: "200px",
         height: "50px",
         fontSize: '24px',
-      }
+      }*/
   },
   form: {
     fontSize: '18px',
@@ -125,11 +125,11 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     fontSize: '20px',
     color: '#F2F2F2',
-       "@media (min-width: 360px)": {
-        fontSize: '24px',
-        color: '#F2F2F2',
-         transition: '0.2s linear',
-      }
+    /*"@media (min-width: 360px)": {
+      fontSize: '24px',
+      color: '#F2F2F2',
+      transition: '0.2s linear',
+    }*/
   },
   link: {
     fontFamily: 'Spectral SC',
@@ -142,17 +142,17 @@ const styles = StyleSheet.create({
       color: '#D97904',
       cursor: 'pointer'
     },
-    "@media (min-width: 360px)": {
-        fontSize: '24px',
-        color: '#F2F2F2',
-         transition: '0.2s linear',
-         ':hover': {
-            color: '#D97904',
-            cursor: 'pointer'
-          },
+    /*"@media (min-width: 360px)": {
+      fontSize: '24px',
+      color: '#F2F2F2',
+      transition: '0.2s linear',
+      ':hover': {
+        color: '#D97904',
+        cursor: 'pointer'
       }
+    }*/
 },
-    footer: {
+  footer: {
     fontFamily: 'Spectral SC',
     fontWeight: 'normal',
     fontSize: '14px',
