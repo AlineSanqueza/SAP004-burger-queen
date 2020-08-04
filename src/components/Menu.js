@@ -2,9 +2,9 @@ import React from 'react';
 
 const MenuButton = (props) => {
   const {breakfast} = props;
-  return(
+  return (
   //passar a função onclick como props. 
-    <button onClick={props.onClink}>
+    <button onClick={props.onClick}>
       {breakfast.map((item) => {
         (
         <>

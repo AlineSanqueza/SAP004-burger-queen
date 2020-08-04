@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Nav from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input';
-import MenuButton from '../components/Menu'
+import MenuButton from '../components/Menu';
 import firebase from '../firebase';
 import Swal  from 'sweetalert2';
 import { StyleSheet, css } from 'aphrodite';
@@ -51,36 +51,38 @@ const Saloon = () => {
         })
       )
   }
-  const Optionmenu = () => {
+  const Optionmenu = ({name, state}) => {
     firebase
     .firestore()
     .collection('menu')
-    .doc('breakfast')
+    .doc(name)
     .get()
     .then((snapshot) => {
-      for (const item in snapshot.data()) {
+      const item = snapshot.data();
+      state(() => item)
+      /*for (const item in snapshot.data()) {
         console.log(item)
-      }
+      }*/
     })
-    .set(breakfast)
+    //setBreakfast('')
 }
 //opcao 1: mudar o set do breakfast,logo abaixo do then
 // opcao 2: chamar a função que esta fazendo o useState.
   useEffect(() => {
-    Optionmenu({name:'breakfast',state:setBreakfast})
-  },[])
+    Optionmenu({name:'breakfast', state: setBreakfast})
+  },[]);
 
-  const allBurguer =(e) => {
+  const allBurguer = (e) => {
     setMenu(e.target.value);
-    Optionmenu({ name:"burgers", state: setBurgers})
+    Optionmenu({ name:'burgers', state: setBurgers})
   }
 
   return (
     <main className={css(styles.main)}>
       <Nav/>
       <div className={css(styles.bntMenu)}>
-        <Button style={css(styles.button)} value='breakfast' onClick={(e) =>Optionmenu(e.target.value)} children='Café da manhã'/>
-        <Button style={css(styles.button)} value='burgers' onClick={allBurguer} children='Lanches'/>
+        <Button style={css(styles.button)} onClick={(e) => setMenu(e.target.value)} children='Café da manhã'/>
+        <Button style={css(styles.button)} onClick={allBurguer} children='Lanches'/>
       </div>
       <div className={css(styles.menu)}>
 

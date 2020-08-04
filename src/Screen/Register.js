@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
     padding:'10px',
     color: '#F2F2F2',
     fontSize: '14px',
+    fontFamily: 'Spectral SC',
     borderStyle: 'none',
     cursor: 'pointer',
     //"@media (max-width: 360px)": {
@@ -176,7 +177,7 @@ const styles = StyleSheet.create({
   p: {
     fontFamily: 'Spectral SC',
     fontWeight: 'normal',
-    fontSize: '20px',
+    fontSize: '15px',
     color: '#F2F2F2',
     //"@media (min-width: 360px)": {
     //    fontSize: '24px',
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
   link: {
     fontFamily: 'Spectral SC',
     fontWeight: 'normal',
-    fontSize: '20px',
+    fontSize: '15px',
     textDecoration: 'none',
     color: '#F2F2F2',
     transition: '0.5s linear',
