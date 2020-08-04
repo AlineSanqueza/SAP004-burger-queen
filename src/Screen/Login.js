@@ -40,7 +40,7 @@ const Login = () => {
         })
         .catch((error) => {
           const err = error.code
-          if (err ==='auth/invalid-email') {
+          if (err === 'auth/invalid-email') {
             Swal.fire({
                 title: 'Ops...',
                 text: 'E-mail inválido',
@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     color: '#F2F2F2',
     fontSize: '14px',
     borderStyle: 'none',
+    fontFamily: 'Spectral SC',
     cursor: 'pointer',
     //"@media (max-width: 360px)": {
     //    width: "200px",
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
   p: {
     fontFamily: 'Spectral SC',
     fontWeight: 'normal',
-    fontSize: '20px',
+    fontSize: '15px',
     color: '#F2F2F2',
     //   "@media (min-width: 360px)": {
     //    fontSize: '24px',
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
   link: {
     fontFamily: 'Spectral SC',
     fontWeight: 'normal',
-    fontSize: '20px',
+    fontSize: '15px',
     textDecoration: 'none',
     color: '#F2F2F2',
     transition: '0.5s linear',
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
     //      },
       }
 },
-    footer: {
+  footer: {
     fontFamily: 'Spectral SC',
     fontWeight: 'normal',
     fontSize: '14px',

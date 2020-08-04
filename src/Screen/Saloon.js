@@ -1,13 +1,18 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Nav from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input';
-import { StyleSheet, css } from 'aphrodite';
 import firebase from '../firebase';
+import Swal  from 'sweetalert2';
+import { StyleSheet, css } from 'aphrodite';
+
 const Saloon = () => {
-    const [menu,setMenu] = useState('breakfast')
-    const [breakfast,setBreakfast] = useState({})
-    const [burger,setBurgers] = useState({})
+  const [menu, setMenu] = useState('breakfast');
+  const [breakfast, setBreakfast] = useState({});
+  const [burger, setBurgers] = useState({});
+  const [customer, setCustomer] = useState('');
+  const [table, setTable] = useState('');
+
 
         const Optionmenu = () => {
         firebase
@@ -28,46 +33,86 @@ const Saloon = () => {
         Optionmenu({name:'breakfast',state:setBreakfast})
     },[])
 
-    const allBurguer =(e) => {
-        setMenu(e.target.value);
-        Optionmenu({ name:"burgers", state: setBurgers})
-    }
+  /*const breakfast = () => {
+    firebase
+    .firestore()
+    .collection('menu')
+    .doc('breakfast')
+    .get()
+    .then((snapshot => {
+      for(const item in snapshot.data()){
+        console.log(item)
+      }
+    }))
+  }*/
 
-      //.then((snapshot=> {
-        //    for (const item in snapshot.data()) {
-        //        console.log(item)
-        //    }
-    
-    //const burger = () => {
-    //    firebase
-    //    .firestore()
-    //    .collection('menu')
-    //    .doc('burgers')
-    //    .get()
-    //    .then((snapshot=> {
-    //        for (const item in snapshot.data()) {
-    //            console.log(item)
-    //        }
-    //    }))
-    //}
+
+  const sendOrder = () => {
+    !customer || !table ?
+      Swal.fire({
+        title: 'Atenção',
+        text: 'Digite o nome do cliente ou o número da mesa',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+      :
+      firebase
+      .firestore()
+      .collection('orders')
+      .add({
+        customer,
+        table
+      }).then(
+        Swal.fire({
+          title: 'Pedido enviado com sucesso',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1600
+        })
+      )
+  }
+  const Optionmenu = ({name, state}) => {
+    firebase
+    .firestore()
+    .collection('menu')
+    .doc(name)
+    .get()
+    .then((snapshot) => {
+      const item = snapshot.data();
+      state(() => item)
+      /*for (const item in snapshot.data()) {
+        console.log(item)
+      }*/
+    })
+    //setBreakfast('')
+}
+//opcao 1: mudar o set do breakfast,logo abaixo do then
+// opcao 2: chamar a função que esta fazendo o useState.
+  useEffect(() => {
+    Optionmenu({name:'breakfast', state: setBreakfast})
+  },[]);
+
+  const allBurguer = (e) => {
+    setMenu(e.target.value);
+    Optionmenu({ name:'burgers', state: setBurgers})
+  }
 
   return (
     <main className={css(styles.main)}>
-      <Nav className={css(styles.nav)}/>
+      <Nav/>
+      <div className={css(styles.bntMenu)}>
+        <Button style={css(styles.button)} onClick={(e) => setMenu(e.target.value)} children='Café da manhã'/>
+        <Button style={css(styles.button)} onClick={allBurguer} children='Lanches'/>
+      </div>
+
       <div className={css(styles.menu)}>
-        <Button style={css(styles.button)} value='breakfast' onClick={(e) =>Optionmenu(e.target.value)} children='Café da manhã'/>
-        <Button style={css(styles.button)}  value='burgers' onClick={allBurguer}  children='Lanches' />
-       </div>
-       {/*<div className={css(styles.secMenu)}>
-        {menuType.map((selectedItem)=> 
-       <MenuButton onclick= {() => verifyOptions(selectedItem)} {...selectedItem} className={css(styles.menuButton)}  />
-       )}
-       </div>*/}
+
+      </div>
       <div className={css(styles.containerOrder)}>
         <p className={css(styles.p)}>Resumo do pedido</p>
         <div className={css(styles.position)}>
-          <Input style={css(styles.input)} type='text' title='Cliente'/>
-          <Input style={css(styles.input)} type='number' title='Mesa'/>
+          <Input style={css(styles.input)} onChange={(e)=>setCustomer(e.target.value)} type='text' title='Cliente'/>
+          <Input style={css(styles.input)} onChange={(e)=>setTable(e.target.value)} type='number' title='Mesa'/>
         </div>
           <>
             <div className={css(styles.order)}> Qtd:
@@ -76,7 +121,7 @@ const Saloon = () => {
           </>
           <div className={css(styles.position)}>
             <p className={css(styles.p)}>Total: R$,00</p>
-            <Button style={css(styles.send)} children='Enviar pedido'/>
+            <Button style={css(styles.send)} onClick={sendOrder} children='Enviar pedido'/>
           </div>
       </div>
     </main>
@@ -89,8 +134,7 @@ const styles = StyleSheet.create({
     width:'100%',
     height: '100vh',
   },
-  nav: {
-    background: 'tomato',
+  btnMenu: {
     display: 'flex',
     flexWrap: 'wrap',
     marginTop: '50px',
@@ -168,17 +212,12 @@ const styles = StyleSheet.create({
 //    justifyContent: 'center',
 //    flexFlow: ['column', 'wrap'],
 //},
-
   p: {
     fontSize: '20px',
     color: 'black',
     padding: '10px'
   },
   input: {
-    /*borderRadius: '6px',
-    width: '170px',
-    height: '35px',
-    textAlign: 'center',*/
     borderRadius: '5px',
     width: '40%',
     padding: '10px',
@@ -206,7 +245,17 @@ const styles = StyleSheet.create({
     borderStyle: 'none',
     cursor: 'pointer',
     margin: '25px'
-},
+  },
+  containerOrder: {
+    marginTop: '10%',
+    background: '#ccc',
+    width: '35%',
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: '10px',
+    marginLeft: '60%',
+    alignItems: 'center',
+  },
+})
 
-  })
 export default Saloon;
