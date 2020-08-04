@@ -2,7 +2,6 @@ import React, { useState,useEffect } from 'react';
 import Nav from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input';
-import MenuButton from '../components/Menu'
 import { StyleSheet, css } from 'aphrodite';
 import firebase from '../firebase';
 const Saloon = () => {
@@ -21,7 +20,6 @@ const Saloon = () => {
                         console.log(item)
                     }
         })
-        .set(breakfast)
         
     }
     //opcao 1: mudar o set do breakfast,logo abaixo do then
@@ -56,7 +54,6 @@ const Saloon = () => {
   return (
     <main className={css(styles.main)}>
       <Nav className={css(styles.nav)}/>
-      <MenuButton breakfast={breakfast} />
       <div className={css(styles.menu)}>
         <Button style={css(styles.button)} value='breakfast' onClick={(e) =>Optionmenu(e.target.value)} children='Café da manhã'/>
         <Button style={css(styles.button)}  value='burgers' onClick={allBurguer}  children='Lanches' />
