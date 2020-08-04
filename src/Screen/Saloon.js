@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Nav from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input';
-import MenuButton from '../components/Menu';
 import firebase from '../firebase';
 import Swal  from 'sweetalert2';
 import { StyleSheet, css } from 'aphrodite';
@@ -13,6 +12,26 @@ const Saloon = () => {
   const [burger, setBurgers] = useState({});
   const [customer, setCustomer] = useState('');
   const [table, setTable] = useState('');
+
+
+        const Optionmenu = () => {
+        firebase
+        .firestore()
+        .collection('menu')
+        .doc('breakfast')
+        .get()
+        .then((snapshot) => {
+            for (const item in snapshot.data()) {
+                        console.log(item)
+                    }
+        })
+        
+    }
+    //opcao 1: mudar o set do breakfast,logo abaixo do then
+    // opcao 2: chamar a função que esta fazendo o useState.
+    useEffect(() => {
+        Optionmenu({name:'breakfast',state:setBreakfast})
+    },[])
 
   /*const breakfast = () => {
     firebase
@@ -26,6 +45,7 @@ const Saloon = () => {
       }
     }))
   }*/
+
 
   const sendOrder = () => {
     !customer || !table ?
@@ -84,6 +104,7 @@ const Saloon = () => {
         <Button style={css(styles.button)} onClick={(e) => setMenu(e.target.value)} children='Café da manhã'/>
         <Button style={css(styles.button)} onClick={allBurguer} children='Lanches'/>
       </div>
+
       <div className={css(styles.menu)}>
 
       </div>
