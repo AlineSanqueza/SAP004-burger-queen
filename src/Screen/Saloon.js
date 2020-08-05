@@ -48,27 +48,33 @@ const Saloon = () => {
       setBreakfast(Object.entries(snapshot.data()))
     });
 }
+const OptionBurger = () => {
+  firebase
+  .firestore()
+  .collection('menu')
+  .doc('burgers')
+  .get()
+  .then((snapshot) => {
+    setBreakfast(Object.entries(snapshot.data()))
+  });
+}
 
-  useEffect(() => {
-    OptionMenu()
-  },[]);
-
-  useEffect(()=>console.log(breakfast),[breakfast])
-
-  const allBurguer = (e) => {
-    setMenu(e.target.value);
-    OptionMenu({ name:'burgers', state: setBurgers})
-  }
+  //const allBurguer = (e) => {
+  //  setMenu(e.target.value);
+  //  OptionBurger = () => {
+  //    ({ name:'burgers', state: setBurgers})
+  //}
 
   return (
     <main className={css(styles.main)}>
       <Nav/>
       <div className={css(styles.bntMenu)}>
-        <Button style={css(styles.button)} onClick={(e) => OptionMenu(e.target.value)} children='Café da manhã'/>
-        <Button style={css(styles.button)} onClick={allBurguer} children='Lanches'/>
+        <Button style={css(styles.button)} onClick={(e) => OptionMenu(e.target.value)} className={css(styles.button)} children='Café da manhã'/>
+        <Button style={css(styles.button)} onClick={(e) => OptionBurger(e.target.value)} children='Lanches'/>
       </div>
       <div className={css(styles.menu)}>
-        {breakfast.map((el, index) => <MenuButton el={el} index={index}/>)}
+        {breakfast.map((el, index) => <MenuButton  className={css(styles.button)} el={el} index={index}/>)}
+        {burger.map((el, index) => <MenuButton className={css(styles.button)} el={el} index={index}/>)}
       </div>
       <div className={css(styles.containerOrder)}>
         <p className={css(styles.p)}>Resumo do pedido</p>
@@ -106,7 +112,7 @@ const styles = StyleSheet.create({
     top: '0',
     width: '100%'
   },
-
+    
   menu: {
     marginTop: '15%',
     background: '#0D0D0D',
