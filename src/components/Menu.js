@@ -1,16 +1,12 @@
 import React from 'react';
 
-function MenuButton(props) {
-    //const {breakfast} = props;
-    return(
-        // passar a função onclick como props. 
-        <button onClick={props.onClink}>
-                        <>
-                        <p>{item.name}</p>
-                        <p>R${item.price},00</p>
-                        </>
-        </button>
-    )
+const MenuButton = ({el, index, onClick}) => {
+  return (
+    <button onClick={onClick} key={index}>
+      <p key={el[0]+index}>{el[0]}</p>
+      <p key={el[1]+index}>R${el[1]},00</p>
+    </button>
+  );
 }
 
 export default MenuButton;

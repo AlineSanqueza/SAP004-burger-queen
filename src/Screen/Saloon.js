@@ -2,50 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Nav from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input';
+import MenuButton from '../components/Menu';
 import firebase from '../firebase';
 import Swal  from 'sweetalert2';
 import { StyleSheet, css } from 'aphrodite';
 
 const Saloon = () => {
   const [menu, setMenu] = useState('breakfast');
-  const [breakfast, setBreakfast] = useState({});
-  const [burger, setBurgers] = useState({});
+  const [breakfast, setBreakfast] = useState([]);
+  const [burger, setBurgers] = useState([]);
   const [customer, setCustomer] = useState('');
   const [table, setTable] = useState('');
-
-
-        const Optionmenu = () => {
-        firebase
-        .firestore()
-        .collection('menu')
-        .doc('breakfast')
-        .get()
-        .then((snapshot) => {
-            for (const item in snapshot.data()) {
-                        console.log(item)
-                    }
-        })
-        
-    }
-    //opcao 1: mudar o set do breakfast,logo abaixo do then
-    // opcao 2: chamar a função que esta fazendo o useState.
-    useEffect(() => {
-        Optionmenu({name:'breakfast',state:setBreakfast})
-    },[])
-
-  /*const breakfast = () => {
-    firebase
-    .firestore()
-    .collection('menu')
-    .doc('breakfast')
-    .get()
-    .then((snapshot => {
-      for(const item in snapshot.data()){
-        console.log(item)
-      }
-    }))
-  }*/
-
 
   const sendOrder = () => {
     !customer || !table ?
@@ -69,44 +36,39 @@ const Saloon = () => {
           showConfirmButton: false,
           timer: 1600
         })
-      )
+      );
   }
-  const Optionmenu = ({name, state}) => {
+  const OptionMenu = () => {
     firebase
     .firestore()
     .collection('menu')
-    .doc(name)
+    .doc('breakfast')
     .get()
     .then((snapshot) => {
-      const item = snapshot.data();
-      state(() => item)
-      /*for (const item in snapshot.data()) {
-        console.log(item)
-      }*/
-    })
-    //setBreakfast('')
+      setBreakfast(Object.entries(snapshot.data()))
+    });
 }
-//opcao 1: mudar o set do breakfast,logo abaixo do then
-// opcao 2: chamar a função que esta fazendo o useState.
+
   useEffect(() => {
-    Optionmenu({name:'breakfast', state: setBreakfast})
+    OptionMenu()
   },[]);
+
+  useEffect(()=>console.log(breakfast),[breakfast])
 
   const allBurguer = (e) => {
     setMenu(e.target.value);
-    Optionmenu({ name:'burgers', state: setBurgers})
+    OptionMenu({ name:'burgers', state: setBurgers})
   }
 
   return (
     <main className={css(styles.main)}>
       <Nav/>
       <div className={css(styles.bntMenu)}>
-        <Button style={css(styles.button)} onClick={(e) => setMenu(e.target.value)} children='Café da manhã'/>
+        <Button style={css(styles.button)} onClick={(e) => OptionMenu(e.target.value)} children='Café da manhã'/>
         <Button style={css(styles.button)} onClick={allBurguer} children='Lanches'/>
       </div>
-
       <div className={css(styles.menu)}>
-
+        {breakfast.map((el, index) => <MenuButton el={el} index={index}/>)}
       </div>
       <div className={css(styles.containerOrder)}>
         <p className={css(styles.p)}>Resumo do pedido</p>
@@ -245,17 +207,7 @@ const styles = StyleSheet.create({
     borderStyle: 'none',
     cursor: 'pointer',
     margin: '25px'
-  },
-  containerOrder: {
-    marginTop: '10%',
-    background: '#ccc',
-    width: '35%',
-    display: 'flex',
-    flexDirection: 'column',
-    borderRadius: '10px',
-    marginLeft: '60%',
-    alignItems: 'center',
-  },
+  }
 })
 
 export default Saloon;
