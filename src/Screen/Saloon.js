@@ -13,8 +13,32 @@ const Saloon = () => {
   const [burger, setBurgers] = useState([]);
   const [customer, setCustomer] = useState('');
   const [table, setTable] = useState('');
+  const [order, setOrder] = useState([]);
+  const [total, setTotal] = useState(0);
 
-  const sendOrder = () => {
+  const OptionMenu = () => {
+    firebase
+    .firestore()
+    .collection('menu')
+    .doc('breakfast')
+    .get()
+    .then((snapshot) => {
+      setBreakfast(Object.entries(snapshot.data()))
+    });
+}
+
+  useEffect(() => {
+    OptionMenu()
+  },[]);
+
+  useEffect(()=>console.log(breakfast),[breakfast])
+
+  const allBurguer = (e) => {
+    setMenu(e.target.value);
+    OptionMenu({ name:'burgers', state: setBurgers})
+  }
+
+  const addOrder = () => {
     !customer || !table ?
       Swal.fire({
         title: 'Atenção',
@@ -38,27 +62,6 @@ const Saloon = () => {
         })
       );
   }
-  const OptionMenu = () => {
-    firebase
-    .firestore()
-    .collection('menu')
-    .doc('breakfast')
-    .get()
-    .then((snapshot) => {
-      setBreakfast(Object.entries(snapshot.data()))
-    });
-}
-
-  useEffect(() => {
-    OptionMenu()
-  },[]);
-
-  useEffect(()=>console.log(breakfast),[breakfast])
-
-  const allBurguer = (e) => {
-    setMenu(e.target.value);
-    OptionMenu({ name:'burgers', state: setBurgers})
-  }
 
   return (
     <main className={css(styles.main)}>
@@ -68,7 +71,7 @@ const Saloon = () => {
         <Button style={css(styles.button)} onClick={allBurguer} children='Lanches'/>
       </div>
       <div className={css(styles.menu)}>
-        {breakfast.map((el, index) => <MenuButton el={el} index={index}/>)}
+        {breakfast.map((el, index) => <MenuButton key={index} el={el} index={index}/>)}
       </div>
       <div className={css(styles.containerOrder)}>
         <p className={css(styles.p)}>Resumo do pedido</p>
@@ -83,7 +86,7 @@ const Saloon = () => {
           </>
           <div className={css(styles.position)}>
             <p className={css(styles.p)}>Total: R$,00</p>
-            <Button style={css(styles.send)} onClick={sendOrder} children='Enviar pedido'/>
+            <Button style={css(styles.send)} onClick={addOrder} children='Enviar pedido'/>
           </div>
       </div>
     </main>
@@ -130,9 +133,13 @@ const styles = StyleSheet.create({
     fontSize: '24px',
     borderStyle: 'none',
     cursor: 'pointer',
+    outline: 'none',
     ':active': {
     background: '#D97904',
-    }
+    },
+
+      
+
     //background: '#ccc',
     //width: '35%',
     //display: 'flex',
@@ -197,6 +204,8 @@ const styles = StyleSheet.create({
   delete: {
     borderStyle: 'none',
     backgroundColor: 'transparent',
+    cursor: 'pointer',
+    outline: 'none'
   },
   send: {
     background: '#D97904',
@@ -206,7 +215,8 @@ const styles = StyleSheet.create({
     fontSize: '15px',
     borderStyle: 'none',
     cursor: 'pointer',
-    margin: '25px'
+    margin: '25px',
+    outline: 'none'
   }
 })
 

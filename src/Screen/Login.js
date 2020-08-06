@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     fontSize: '14px',
     background: '#F2F2F2',
     borderStyle: 'none',
+    outline: 'none'
     //"@media (min-width: 360px)": {
     //    width: "250px",
     //    height: "30px",
@@ -109,6 +110,7 @@ const styles = StyleSheet.create({
     borderStyle: 'none',
     fontFamily: 'Spectral SC',
     cursor: 'pointer',
+    outline: 'none'
     //"@media (max-width: 360px)": {
     //    width: "200px",
     //    height: "50px",
