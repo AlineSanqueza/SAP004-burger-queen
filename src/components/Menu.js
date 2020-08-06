@@ -14,14 +14,14 @@ const MenuButton = ({el, index, onClick}) => {
 const styles = StyleSheet.create({
   button: {
     background: '#D97904',
-    fontFamily: 'Spectral SC',
+    fontFamily: 'Rubik',
     fontSize: '13px',
     borderRadius: '10px',
     borderStyle: 'none',
     color: '#F2F2F2',
     marginRight: '5px',
     marginLeft: '5px',
-    padding: '5px',
+    padding: '1px',
     cursor: 'pointer',
     ':active': {
       background: '#ccc',
