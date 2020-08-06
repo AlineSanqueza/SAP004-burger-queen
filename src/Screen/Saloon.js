@@ -80,6 +80,7 @@ const OptionBurger = () => {
             <div className={css(styles.order)}> Qtd:
               <Button style={css(styles.delete)} children='🗑️'/>
               {order.map((el)=><p> {el} </p>)}
+              <button >❌</button>
             </div>
           </>
           <div className={css(styles.position)}>
