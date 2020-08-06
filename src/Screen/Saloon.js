@@ -8,7 +8,6 @@ import Swal  from 'sweetalert2';
 import { StyleSheet, css } from 'aphrodite';
 
 const Saloon = () => {
-  const [menu, setMenu] = useState('breakfast');
   const [breakfast, setBreakfast] = useState([]);
   const [burger, setBurgers] = useState([]);
   const [customer, setCustomer] = useState('');
@@ -62,16 +61,39 @@ const Saloon = () => {
         })
       );
   }
+  
+  const OptionMenu = () => {
+    firebase
+    .firestore()
+    .collection('menu')
+    .doc('breakfast')
+    .get()
+    .then((snapshot) => {
+      setBreakfast(Object.entries(snapshot.data()))
+    });
+}
+const OptionBurger = () => {
+  firebase
+  .firestore()
+  .collection('menu')
+  .doc('burgers')
+  .get()
+  .then((snapshot) => {
+    setBreakfast(Object.entries(snapshot.data()))
+  });
+}
+  console.log(order)
 
   return (
     <main className={css(styles.main)}>
       <Nav/>
       <div className={css(styles.bntMenu)}>
-        <Button style={css(styles.button)} onClick={(e) => OptionMenu(e.target.value)} children='Café da manhã'/>
-        <Button style={css(styles.button)} onClick={allBurguer} children='Lanches'/>
+        <Button style={css(styles.button)} onClick={(e) => OptionMenu(e.target.value)}  children='Café da manhã'/>
+        <Button style={css(styles.button)} onClick={(e) => OptionBurger(e.target.value)} children='Lanches'/>
       </div>
       <div className={css(styles.menu)}>
-        {breakfast.map((el, index) => <MenuButton key={index} el={el} index={index}/>)}
+        {breakfast.map((el, index) => <MenuButton  onClick={()=>SetOrder([...order,el[0],el[1]])} className={css(styles.button)} el={el} index={index}/>)}
+        {burger.map((el, index) => <MenuButton className={css(styles.button)} el={el} index={index}/>)}
       </div>
       <div className={css(styles.containerOrder)}>
         <p className={css(styles.p)}>Resumo do pedido</p>
@@ -82,6 +104,8 @@ const Saloon = () => {
           <>
             <div className={css(styles.order)}> Qtd:
               <Button style={css(styles.delete)} children='🗑️'/>
+              {order.map((el)=><p> {el} </p>)}
+              <button >❌</button>
             </div>
           </>
           <div className={css(styles.position)}>
@@ -98,34 +122,32 @@ const styles = StyleSheet.create({
     background: '#0D0D0D',
     width:'100%',
     height: '100vh',
+    fontSize:'18px'
   },
   btnMenu: {
     display: 'flex',
     flexWrap: 'wrap',
     marginTop: '50px',
     alignItems: 'center',
-    padding: '18px',
+    padding: '10px',
     position: 'fixed',
     top: '0',
     width: '100%'
   },
-
+    
   menu: {
     marginTop: '15%',
     background: '#0D0D0D',
-    width: '70%',
-    height: '12vh',
+    width: '8%',
+    height: '10%',
     display: 'flex',
-    //flexDirection: 'column',
     borderRadius: '10px',
-    marginLeft: '10%',
-    //alignItems: 'center',
   },
   button: {
     background: '#F2F2F2',
     borderRadius: '10px',
-    width: '60%',
-    height: '50%',
+    width: '40%',
+    height: '40%',
     margin: '0% 3% 2%',
     padding:'5px',
     fontFamily: 'Spectral SC',
@@ -137,30 +159,8 @@ const styles = StyleSheet.create({
     ':active': {
     background: '#D97904',
     },
-
-      
-
-    //background: '#ccc',
-    //width: '35%',
-    //display: 'flex',
-    //borderRadius: '10px',
-    //alignItems: 'center',
-},
-    //menuButton:{
-    //    background: 'F2F2F2',
-    //    color:'#ccc',
-    //    width: '10vw',
-    //    height: 'auto',
-    //    margin: '2vw 1.5vw 1vw 1.5vw',
-    //    fontSize: '0.8rem',
-    //    borderRadius: '2vw',
-    //    fontWeight: 'bold',
-    //    border: 'none',
-    //    borderRadius: '10px'
-    //}, 
-
   containerOrder: {
-    marginTop: '50%',
+    //marginTop: '20%',
     background: '#ccc',
     width: '60%',
     display: 'flex',
@@ -168,19 +168,7 @@ const styles = StyleSheet.create({
     borderRadius: '10px',
     marginLeft: '30%',
     alignItems: 'center',
-
-    /*background: 'tomato',
-    alignItems: 'center',
-    flexDirection: 'column',
-    width: '30%',
-    display: 'flex',
-    borderRadius: '5px'*/
   },
-//  secMenu: {
-//    display: 'flex',
-//    justifyContent: 'center',
-//    flexFlow: ['column', 'wrap'],
-//},
   p: {
     fontSize: '20px',
     color: 'black',
@@ -192,7 +180,8 @@ const styles = StyleSheet.create({
     padding: '10px',
     fontSize: '14px',
     background: '#F2F2F2',
-    borderStyle: 'none'
+    borderStyle: 'none',
+    outline: 'none'
   },
   order: {
     fontSize: '20px'
@@ -212,12 +201,12 @@ const styles = StyleSheet.create({
     color: '#F2F2F2',
     borderRadius: '5px',
     height: '40px',
-    fontSize: '15px',
+    fontSize: '20px',
     borderStyle: 'none',
     cursor: 'pointer',
     margin: '25px',
     outline: 'none'
   }
-})
+});
 
 export default Saloon;
