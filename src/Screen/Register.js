@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
     margin: '0% 3% 2%',
     fontSize: '14px',
     borderStyle: 'none',
+    outline: 'none'
     //"@media (max-width: 360px)": {
     //    width: "230px",
     //    height: "50px",

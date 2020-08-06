@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Spectral SC',
     outline: 'none',
     cursor: 'pointer',
+    outline: 'none'
     //"@media (max-width: 360px)": {
     //    width: "200px",
     //    height: "50px",

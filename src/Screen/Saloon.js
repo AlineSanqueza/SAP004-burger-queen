@@ -12,9 +12,32 @@ const Saloon = () => {
   const [burger, setBurgers] = useState([]);
   const [customer, setCustomer] = useState('');
   const [table, setTable] = useState('');
-  const [order,SetOrder] = useState([]);
+  const [order, setOrder] = useState([]);
+  const [total, setTotal] = useState(0);
 
-  const sendOrder = () => {
+  const OptionMenu = () => {
+    firebase
+    .firestore()
+    .collection('menu')
+    .doc('breakfast')
+    .get()
+    .then((snapshot) => {
+      setBreakfast(Object.entries(snapshot.data()))
+    });
+}
+
+  useEffect(() => {
+    OptionMenu()
+  },[]);
+
+  useEffect(()=>console.log(breakfast),[breakfast])
+
+  const allBurguer = (e) => {
+    setMenu(e.target.value);
+    OptionMenu({ name:'burgers', state: setBurgers})
+  }
+
+  const addOrder = () => {
     !customer || !table ?
       Swal.fire({
         title: 'Atenção',
@@ -38,6 +61,7 @@ const Saloon = () => {
         })
       );
   }
+  
   const OptionMenu = () => {
     firebase
     .firestore()
@@ -59,6 +83,7 @@ const OptionBurger = () => {
   });
 }
   console.log(order)
+
   return (
     <main className={css(styles.main)}>
       <Nav/>
@@ -85,7 +110,7 @@ const OptionBurger = () => {
           </>
           <div className={css(styles.position)}>
             <p className={css(styles.p)}>Total: R$,00</p>
-            <Button style={css(styles.send)} onClick={sendOrder} children='Enviar pedido'/>
+            <Button style={css(styles.send)} onClick={addOrder} children='Enviar pedido'/>
           </div>
       </div>
     </main>
@@ -133,9 +158,7 @@ const styles = StyleSheet.create({
     outline: 'none',
     ':active': {
     background: '#D97904',
-    }
-},
-
+    },
   containerOrder: {
     //marginTop: '20%',
     background: '#ccc',
@@ -145,7 +168,6 @@ const styles = StyleSheet.create({
     borderRadius: '10px',
     marginLeft: '30%',
     alignItems: 'center',
-
   },
   p: {
     fontSize: '20px',
@@ -171,6 +193,8 @@ const styles = StyleSheet.create({
   delete: {
     borderStyle: 'none',
     backgroundColor: 'transparent',
+    cursor: 'pointer',
+    outline: 'none'
   },
   send: {
     background: '#D97904',
@@ -180,8 +204,9 @@ const styles = StyleSheet.create({
     fontSize: '20px',
     borderStyle: 'none',
     cursor: 'pointer',
-    margin: '25px'
+    margin: '25px',
+    outline: 'none'
   }
-})
+});
 
 export default Saloon;
