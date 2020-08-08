@@ -8,9 +8,8 @@ const MenuButton = ({el, index, onClick}) => {
       <p key={el[1]+index}>R${el[1]},00</p>
     </button>
   );
+} 
 
-
-  } 
 const styles = StyleSheet.create({
   button: {
     background: '#D97904',
@@ -23,6 +22,7 @@ const styles = StyleSheet.create({
     marginLeft: '5px',
     padding: '1px',
     cursor: 'pointer',
+    outline: 'none',
     ':active': {
       background: '#ccc',
       color: '#0D0D0D',
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 })
 
 
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
   button: {
     background: '#D97904',
     fontFamily: 'Spectral SC',
@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
       color: '#0D0D0D',
     },  
   }
-});
+})*/
 
 export default MenuButton;
