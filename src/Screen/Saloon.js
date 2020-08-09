@@ -13,7 +13,8 @@ const Saloon = () => {
   const [customer, setCustomer] = useState('');
   const [table, setTable] = useState('');
   const [order, setOrder] = useState([]);
-  const [total, setTotal] = useState('');
+  // const [total, setTotal] = useState('');
+  const [counter, setCounter] = useState(0)
 
   const OptionMenu = () => {
     firebase
@@ -66,7 +67,7 @@ const Saloon = () => {
         })
       );
   }
-  
+
   return (
     <main className={css(styles.main)}>
       <Nav/>
@@ -75,8 +76,9 @@ const Saloon = () => {
         <Button style={css(styles.button)} onClick={(e) => OptionBurger(e.target.value)} children='Lanches'/>
       </div>
       <div className={css(styles.menu)}>
-        {breakfast.map((el, index) => <MenuButton onClick={()=>setOrder([...order,el[0],el[1]])} className={css(styles.button)} el={el} key={index}/>)}
-        {burger.map((el, index) => <MenuButton el={el} index={index}/>)}
+        {breakfast.map((el, index) => <MenuButton onClick={() => setOrder(order.concat({item:el[0], price:el[1]}))}el={el}key={index}/>)}
+          {/* onClick={()=>setOrder([...order,el[0],el[1]])} className={css(styles.button)} el={el} key={index}/>)} */}
+        {/* {burger.map((el, index) => <MenuButton el={el} index={index}/>)} */}
       </div>
       <div className={css(styles.containerOrder)}>
         <p className={css(styles.p)}>Resumo do pedido</p>
@@ -85,12 +87,23 @@ const Saloon = () => {
           <Input style={css(styles.input)} onChange={(e)=>setTable(e.target.value)} type='number' title='Mesa'/>
         </div>
           <>
-            <div className={css(styles.order)}> Qtd:
-              <Button style={css(styles.delete)} children='🗑️'/>
-            </div>
+            {/* <div className={css(styles.order)}> Qtd:
+            {order.map((el, index) => (
+              <div>
+                <div key={index}>
+                  <p>{el}</p>
+                  <p>R${el},00</p>
+                </div>
+                  <div>
+                    <Button style={css(styles.delete)} children='🗑️'/>
+                  </div>
+              </div>
+            )
+          )}
+            </div> */}
           </>
           <div className={css(styles.position)}>
-            <p className={css(styles.p)}>Total:R${order.reduce((acc, cur)=> acc + cur, 0)}</p>
+            <p className={css(styles.p)}>Total: R$ {order.reduce((acc, cur) => acc + cur.price, 0)}</p>
             <Button style={css(styles.send)} onClick={addOrder} children='Enviar pedido'/>
           </div>
       </div>

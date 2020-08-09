@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-const MenuButton = ({el, index, onClick}) => {
+const MenuButton = (props) => {
   return (
-    <button onClick={onClick} key={index} className={css(styles.button)}>
-      <p key={el[0]+index}>{el[0]}</p>
-      <p key={el[1]+index}>R${el[1]},00</p>
+    <button onClick={props.onClick} key={props.key} className={css(styles.button)}>
+      <p key={props.el[0]+props.key}>{props.el[0]}</p>
+      <p key={props.el[1]+props.key}>R${props.el[1]},00</p>
+      {/* <p key={el[0]+index}>{el[0]}</p>
+      <p key={el[1]+index}>R${el[1]},00</p> */}
     </button>
   );
 } 
