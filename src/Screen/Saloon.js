@@ -64,11 +64,13 @@ const Saloon = () => {
         })
       );
   }
-    // const deleteItem = (e, key) => {
-    //   e.preventDefault()
-    //   const removed = order.splice(key,[1])
-    //   setOrder([...removed]);
-    // };
+    const deleteItem = (e) => {
+      e.preventDefault()
+      // console.log(e.currentTarget.dataset.index)
+      const removed = order.splice(e.currentTarget.dataset.index, 1)
+      setOrder([...order]);
+      console.log(order)
+    };
   // const decrease = item => {
   //   if (item.counter === 1) {
   //     deleteItem(item);
@@ -120,8 +122,9 @@ const Saloon = () => {
               <div> 
               {order.map((el, index)=> (
                 <>
-                  <p key={index}>merda</p>
-                  <Button style={css(styles.delete)} children='🗑️'/>
+                  <p key={index}>{el.item} R${el.price},00</p>
+                  {/* <p>R${el},00</p> */}
+                  <Button index={index} onClick={deleteItem} style={css(styles.delete)} children='🗑️'/>
                 </>
               )
               )}
