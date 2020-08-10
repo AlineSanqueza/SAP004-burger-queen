@@ -8,45 +8,42 @@ import Swal  from 'sweetalert2';
 import { StyleSheet, css } from 'aphrodite';
 
 const Saloon = () => {
-  const [breakfast, setBreakfast] = useState([]);
-  const [burger, setBurgers] = useState([]);
+  const [menu, setMenu] = useState([]);
   const [customer, setCustomer] = useState('');
   const [table, setTable] = useState('');
   const [order, setOrder] = useState([]);
-  // const [total, setTotal] = useState('');
-  const [counter, setCounter] = useState(0)
 
-  const OptionMenu = () => {
+  const optionBreakfast = () => {
     firebase
     .firestore()
     .collection('menu')
     .doc('breakfast')
     .get()
     .then((snapshot) => {
-      setBreakfast(Object.entries(snapshot.data()))
+      setMenu(Object.entries(snapshot.data()))
     });
 }
 
-  const OptionBurger = () => {
+  const optionBurger = () => {
     firebase
     .firestore()
     .collection('menu')
     .doc('burgers')
     .get()
     .then((snapshot) => {
-      setBreakfast(Object.entries(snapshot.data()))
+      setMenu(Object.entries(snapshot.data()))
     });
 }
 
   useEffect(() => {
-    OptionMenu()
+    optionBreakfast()
   },[]);
 
   const addOrder = () => {
     !customer || !table || !order ?
       Swal.fire({
         title: 'Atenção',
-        text: 'Adicione um pedido ou digite o nome do cliente e o número da mesa.',
+        text: 'Adicione um item ou digite o nome do cliente e o número da mesa.',
         icon: 'warning',
         confirmButtonText: 'OK'
       })
@@ -67,18 +64,38 @@ const Saloon = () => {
         })
       );
   }
+    // const deleteItem = (e, key) => {
+    //   e.preventDefault()
+    //   const removed = order.splice(key,[1])
+    //   setOrder([...removed]);
+    // };
+  // const decrease = item => {
+  //   if (item.counter === 1) {
+  //     deleteItem(item);
+  //   } else {
+  //     item.counter--;
+  //     setMenu([...setMenu]);
+  //   }
+  // }
+  //   const increase = item => {
+  //   if (!menu.includes (item)) {
+  //     item.counter = 1;
+  //     setMenu([...menu, item]);
+  //   } else {
+  //     item.counter += 1;
+  //     setMenu([...menu]);
+  //   }
+  // }
 
   return (
     <main className={css(styles.main)}>
       <Nav/>
       <div className={css(styles.bntMenu)}>
-        <Button style={css(styles.button)} onClick={(e) => OptionMenu(e.target.value)} children='Café da manhã'/>
-        <Button style={css(styles.button)} onClick={(e) => OptionBurger(e.target.value)} children='Lanches'/>
+        <Button style={css(styles.button)} onClick={(e) => optionBreakfast(e.target.value)} children='Café da manhã'/>
+        <Button style={css(styles.button)} onClick={(e) => optionBurger(e.target.value)} children='Lanches'/>
       </div>
       <div className={css(styles.menu)}>
-        {breakfast.map((el, index) => <MenuButton onClick={() => setOrder(order.concat({item:el[0], price:el[1]}))}el={el}key={index}/>)}
-          {/* onClick={()=>setOrder([...order,el[0],el[1]])} className={css(styles.button)} el={el} key={index}/>)} */}
-        {/* {burger.map((el, index) => <MenuButton el={el} index={index}/>)} */}
+        {menu.map((el, index) => <MenuButton onClick={()=>setOrder(order.concat({item:el[0], price:el[1]}))}el={el} key={index}/>)}
       </div>
       <div className={css(styles.containerOrder)}>
         <p className={css(styles.p)}>Resumo do pedido</p>
@@ -86,24 +103,39 @@ const Saloon = () => {
           <Input style={css(styles.input)} onChange={(e)=>setCustomer(e.target.value)} type='text' title='Cliente'/>
           <Input style={css(styles.input)} onChange={(e)=>setTable(e.target.value)} type='number' title='Mesa'/>
         </div>
-          <>
-            {/* <div className={css(styles.order)}> Qtd:
-            {order.map((el, index) => (
-              <div>
-                <div key={index}>
-                  <p>{el}</p>
-                  <p>R${el},00</p>
-                </div>
-                  <div>
-                    <Button style={css(styles.delete)} children='🗑️'/>
-                  </div>
-              </div>
-            )
+
+        {/* CÓDIGO MARCELLA <div className={css(styles.order)}> Qnt:
+          {order.map((el, index)=> (
+            <div key={index}>
+              <p>{el}</p>
+              <p>R${el},00</p>
+              <Button style={css(styles.delete)} children='🗑️'/>
+            </div>
+          ) 
           )}
-            </div> */}
-          </>
+        </div> */}
+
+          <div className={css(styles.order)}> Qtd:
+                
+              <div> 
+              {order.map((el, index)=> (
+                <>
+                  <p key={index}>merda</p>
+                  <Button style={css(styles.delete)} children='🗑️'/>
+                </>
+              )
+              )}
+
+                {/* AUMENTAR E DIMINUIR ITENS <p>R${el},00</p> 
+                    <Button children={'-'} onClick={() => decrease(el)}/>
+                    {el.counter}
+                    <Button children={'+'} onClick={() => increase(el)}/>
+                    <Button style={css(styles.delete)} onClick={e => {e.preventDefault();deleteItem(el);}}children='🗑️'/> */}
+                    
+              </div>
+          </div>
           <div className={css(styles.position)}>
-            <p className={css(styles.p)}>Total: R$ {order.reduce((acc, cur) => acc + cur.price, 0)}</p>
+            <p className={css(styles.p)}> Total: R$ {order.reduce((acc, cur) => acc + cur.price, 0)},00</p>
             <Button style={css(styles.send)} onClick={addOrder} children='Enviar pedido'/>
           </div>
       </div>

@@ -3,9 +3,9 @@ import { StyleSheet, css } from 'aphrodite';
 
 const MenuButton = (props) => {
   return (
-    <button onClick={props.onClick} key={props.key} className={css(styles.button)}>
-      <p key={props.el[0]+props.key}>{props.el[0]}</p>
-      <p key={props.el[1]+props.key}>R${props.el[1]},00</p>
+    <button onClick={props.onClick}  className={css(styles.button)}>
+      <p>{props.el[0]}</p>
+      <p>R${props.el[1]},00</p>
       {/* <p key={el[0]+index}>{el[0]}</p>
       <p key={el[1]+index}>R${el[1]},00</p> */}
     </button>
