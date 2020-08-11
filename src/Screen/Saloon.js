@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import Nav from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -35,9 +35,9 @@ const Saloon = () => {
     });
 }
 
-  useEffect(() => {
-    optionBreakfast()
-  },[]);
+  //useEffect(() => {
+  //  optionBreakfast()
+  //},[]);
 
   const addOrder = () => {
     !customer || !table || !order ?
@@ -66,10 +66,9 @@ const Saloon = () => {
   }
     const deleteItem = (e) => {
       e.preventDefault()
-      // console.log(e.currentTarget.dataset.index)
-      const removed = order.splice(e.currentTarget.dataset.index, 1)
+      order.splice(e.currentTarget.dataset.index, 1)
       setOrder([...order]);
-      console.log(order)
+
     };
   // const decrease = item => {
   //   if (item.counter === 1) {
@@ -106,24 +105,12 @@ const Saloon = () => {
           <Input style={css(styles.input)} onChange={(e)=>setTable(e.target.value)} type='number' title='Mesa'/>
         </div>
 
-        {/* CÓDIGO MARCELLA <div className={css(styles.order)}> Qnt:
-          {order.map((el, index)=> (
-            <div key={index}>
-              <p>{el}</p>
-              <p>R${el},00</p>
-              <Button style={css(styles.delete)} children='🗑️'/>
-            </div>
-          ) 
-          )}
-        </div> */}
-
           <div className={css(styles.order)}> Qtd:
                 
               <div> 
               {order.map((el, index)=> (
                 <>
                   <p key={index}>{el.item} R${el.price},00</p>
-                  {/* <p>R${el},00</p> */}
                   <Button index={index} onClick={deleteItem} style={css(styles.delete)} children='🗑️'/>
                 </>
               )

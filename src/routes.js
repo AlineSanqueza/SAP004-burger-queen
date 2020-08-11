@@ -5,14 +5,17 @@ import Register from './screen/Register';
 //import Private from './private';
 import Kitchen from './screen/Kitchen';
 import Saloon from './screen/Saloon';
-
+//import Notfound from './screen/NotFound'
+//import PrivateRoute from './private'
+import './index.css'
 const Routes = () => {
   return (
     <Switch>
       <Route exact path='/' component={Login}/>
-      <Route path='/register' component={Register}/>  
-      <Route path='/kitchen' component={Kitchen}/>
-      <Route path='/saloon' component={Saloon}/>
+      <Route exact path='/register' component={Register}/>  
+      <Route exact path='/kitchen' component={Kitchen}/>
+      <Route exact path='/saloon' component={Saloon}/>
+      {/*<Route component={Notfound}/>*/}
     </Switch>
   );
 }

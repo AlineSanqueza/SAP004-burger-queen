@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Footer = (props) => {
   return (
-    <footer className={props.style}>Desenvolvido por Aline e Marcela</footer>
+    <footer className={props.style}>Desenvolvido por Aline e Marcella</footer>
   );
 }
 
