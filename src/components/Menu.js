@@ -6,8 +6,6 @@ const MenuButton = (props) => {
     <button onClick={props.onClick} className={css(styles.button)}>
       <p>{props.el[0]}</p>
       <p>R${props.el[1]},00</p>
-      {/* <p key={el[0]+index}>{el[0]}</p>
-      <p key={el[1]+index}>R${el[1]},00</p> */}
     </button>
   );
 } 
@@ -20,9 +18,7 @@ const styles = StyleSheet.create({
     borderRadius: '10px',
     borderStyle: 'none',
     color: '#F2F2F2',
-    marginRight: '5px',
-    marginLeft: '5px',
-    padding: '1px',
+    margin: '15px 5px',
     cursor: 'pointer',
     outline: 'none',
     ':active': {
