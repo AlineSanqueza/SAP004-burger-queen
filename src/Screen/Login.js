@@ -47,13 +47,20 @@ const Login = () => {
                 icon: 'error',
                 confirmButtonText: 'OK'
               })
-          } else {
+          } else if (err === 'auth/wrong-password') {
             Swal.fire({
                 title: 'Ops...',
-                text: 'Senha muito fraca',
+                text: 'Senha inválida',
                 icon: 'error',
                 confirmButtonText: 'OK'
               })
+          } else {
+            Swal.fire({
+              title: 'Ops...',
+              text: 'Algo deu errado',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            })
           }
         });
       });

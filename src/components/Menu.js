@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     borderStyle: 'none',
     color: '#F2F2F2',
     margin: '15px 5px',
+    padding: '15px',
     cursor: 'pointer',
     outline: 'none',
     ':active': {

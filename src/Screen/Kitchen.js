@@ -3,8 +3,8 @@ import firebase from '../firebase';
 import Nav from '../components/Navbar';
 //import Card from '../components/Card';
 import {StyleSheet,css} from 'aphrodite'
-const Kitchen = () => {
 
+const Kitchen = () => {
   const orderKitchen =() =>{
     console.log('funcinou?')
     firebase.firestore().collection('orders').get()
@@ -48,5 +48,5 @@ const styles = StyleSheet.create({
     fontSize: '36px',
     fontFamily: 'Roboto'
   }
-})
+});
 export default Kitchen;

@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Nav from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -35,9 +35,9 @@ const Saloon = () => {
     });
 }
 
-  //useEffect(() => {
-  //  optionBreakfast()
-  //},[]);
+  useEffect(() => {
+    optionBreakfast()
+  },[]);
 
   const addOrder = () => {
     !customer || !table || !order ?
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     //width: '40%',
     // height: '40%',
     margin: '0% 3% 2%',
-    //padding:'5px',
+    padding:'5px',
     fontFamily: 'Spectral SC',
     color: '#0D0D0D',
     fontSize: '24px',
@@ -223,6 +223,7 @@ const styles = StyleSheet.create({
     borderStyle: 'none',
     cursor: 'pointer',
     margin: '25px',
+    padding: '5px',
     outline: 'none',
     ':hover': {
       background: '#227036'
