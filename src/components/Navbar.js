@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     listStyle: 'none',
     display:'inline',
     marginRight: '60px',
-    fontSize: '28px',
+    fontSize: '23px'
   },
   link: {
     textDecoration: 'none',
@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
     }
   },
   img: {
-      width: '200px',
-      height: '100px'
+    width: '200px',
+    height: '100px'
   }
 });
 

@@ -66,28 +66,26 @@ const Saloon = () => {
   }
     const deleteItem = (e) => {
       e.preventDefault()
-      // console.log(e.currentTarget.dataset.index)
-      const removed = order.splice(e.currentTarget.dataset.index, 1)
+      order.splice(e.currentTarget.dataset.index, 1)
       setOrder([...order]);
-      console.log(order)
     };
-  // const decrease = item => {
-  //   if (item.counter === 1) {
-  //     deleteItem(item);
-  //   } else {
-  //     item.counter--;
-  //     setMenu([...setMenu]);
-  //   }
-  // }
-  //   const increase = item => {
-  //   if (!menu.includes (item)) {
-  //     item.counter = 1;
-  //     setMenu([...menu, item]);
-  //   } else {
-  //     item.counter += 1;
-  //     setMenu([...menu]);
-  //   }
-  // }
+    //   const increase = item => {
+    //   if (!menu.includes (item)) {
+    //     item.counter = 1;
+    //     setMenu([...menu, item]);
+    //   } else {
+    //     item.counter += 1;
+    //     setMenu([...menu]);
+    //   }
+    // }
+    //   const decrease = item => {
+    //   if (item.counter === 1) {
+    //     deleteItem(item);
+    //   } else {
+    //     item.counter--;
+    //     setMenu([...menu]);
+    //   }
+    // }
 
   return (
     <main className={css(styles.main)}>
@@ -97,6 +95,7 @@ const Saloon = () => {
         <Button style={css(styles.button)} onClick={(e) => optionBurger(e.target.value)} children='Lanches'/>
       </div>
       <div className={css(styles.menu)}>
+        {/* map renderiza o menubtn e pra cada item ele retorna um btn com nome e preço */}
         {menu.map((el, index) => <MenuButton onClick={()=>setOrder(order.concat({item:el[0], price:el[1]}))}el={el} key={index}/>)}
       </div>
       <div className={css(styles.containerOrder)}>
@@ -105,37 +104,17 @@ const Saloon = () => {
           <Input style={css(styles.input)} onChange={(e)=>setCustomer(e.target.value)} type='text' title='Cliente'/>
           <Input style={css(styles.input)} onChange={(e)=>setTable(e.target.value)} type='number' title='Mesa'/>
         </div>
-
-        {/* CÓDIGO MARCELLA <div className={css(styles.order)}> Qnt:
-          {order.map((el, index)=> (
-            <div key={index}>
-              <p>{el}</p>
-              <p>R${el},00</p>
-              <Button style={css(styles.delete)} children='🗑️'/>
-            </div>
-          ) 
-          )}
-        </div> */}
-
-          <div className={css(styles.order)}> Qtd:
-                
-              <div> 
-              {order.map((el, index)=> (
+          <div className={css(styles.position)}>
+            <div>
+              {order.map((el, index) => (
                 <>
                   <p key={index}>{el.item} R${el.price},00</p>
-                  {/* <p>R${el},00</p> */}
                   <Button index={index} onClick={deleteItem} style={css(styles.delete)} children='🗑️'/>
-                </>
-              )
-              )}
-
-                {/* AUMENTAR E DIMINUIR ITENS <p>R${el},00</p> 
-                    <Button children={'-'} onClick={() => decrease(el)}/>
-                    {el.counter}
-                    <Button children={'+'} onClick={() => increase(el)}/>
-                    <Button style={css(styles.delete)} onClick={e => {e.preventDefault();deleteItem(el);}}children='🗑️'/> */}
-                    
-              </div>
+                  {/* <Button style={css(styles.add)} children={'-'} onClick={() => decrease(el)}/>
+                  {el.counter}
+                  <Button style={css(styles.add)} children={'+'} onClick={() => increase(el)}/> */}
+                </>))} 
+            </div>
           </div>
           <div className={css(styles.position)}>
             <p className={css(styles.p)}> Total: R$ {order.reduce((acc, cur) => acc + cur.price, 0)},00</p>
@@ -155,30 +134,27 @@ const styles = StyleSheet.create({
   },
   btnMenu: {
     display: 'flex',
-    flexWrap: 'wrap',
-    marginTop: '50px',
-    alignItems: 'center',
-    padding: '10px',
-    position: 'fixed',
-    top: '0',
-    width: '100%'
+    // display: 'flex',
+    // marginTop: '50px',
+    // alignItems: 'center',
+    // padding: '10px',
+    // position: 'fixed',
+    // top: '0',
+    // width: '100%',
   },
-    
   menu: {
-    marginTop: '15%',
-    background: '#0D0D0D',
-    width: '8%',
-    height: '10%',
-    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    marginTop: '10px',
     borderRadius: '10px',
   },
   button: {
     background: '#F2F2F2',
     borderRadius: '10px',
-    width: '40%',
-    height: '40%',
+    //width: '40%',
+    // height: '40%',
     margin: '0% 3% 2%',
-    padding:'5px',
+    //padding:'5px',
     fontFamily: 'Spectral SC',
     color: '#0D0D0D',
     fontSize: '24px',
@@ -190,13 +166,13 @@ const styles = StyleSheet.create({
     }
   },  
   containerOrder: {
-    //marginTop: '20%',
     background: '#ccc',
     width: '60%',
     display: 'flex',
     flexDirection: 'column',
     borderRadius: '10px',
     marginLeft: '30%',
+    marginTop: '30px',
     alignItems: 'center',
   },
   p: {
@@ -214,12 +190,24 @@ const styles = StyleSheet.create({
     outline: 'none'
   },
   order: {
-    fontSize: '20px'
+    fontSize: '20px',
   },
   position: {
     display: 'flex',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
   },
+  // add: {
+  //   color: '#0D0D0D',
+  //   fontWeight: 'bold',
+  //   backgroundColor: '#D97904',
+  //   borderColor: '#D97904',
+  //   borderRadius: '5px',
+  //   cursor: 'pointer',
+  //   margin: '3px',
+  //   width: '26px',
+  //   outline: 'none',
+  //   height: '26px'
+  // },
   delete: {
     borderStyle: 'none',
     backgroundColor: 'transparent',
@@ -235,7 +223,10 @@ const styles = StyleSheet.create({
     borderStyle: 'none',
     cursor: 'pointer',
     margin: '25px',
-    outline: 'none'
+    outline: 'none',
+    ':hover': {
+      background: '#227036'
+    }
   }
 });
 
