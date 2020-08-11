@@ -3,7 +3,6 @@ import Button from '../components/Button';
 
 const CardKitchen = (props) => {
   return (
-    // <div>
     <section>
       <p>Cliente : {props.customer}</p>
       Mesa: {props.table}
@@ -16,7 +15,6 @@ const CardKitchen = (props) => {
         <Button title= "Pedido Pront"/>
       </div>
     </section>
-      // </div>
   );
 }
 

@@ -7,10 +7,6 @@ const Select = (props) => {
       <option value='true'> Cozinheiro </option>
       <option value='false'> Garçom </option>
     </select>
-    /*<label>
-      <input type='radio' value='kitchen'> Cozinheiro </input>
-      <input type='radio' value='saloon'> Garçom </input>
-    </label>*/
   );
 }
 

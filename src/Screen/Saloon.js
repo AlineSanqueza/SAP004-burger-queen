@@ -35,10 +35,6 @@ const Saloon = () => {
     });
 }
 
-  useEffect(() => {
-    optionBreakfast()
-  },[]);
-
   const addOrder = () => {
     !customer || !table || !order ?
       Swal.fire({
@@ -69,23 +65,7 @@ const Saloon = () => {
       order.splice(e.currentTarget.dataset.index, 1)
       setOrder([...order]);
     };
-    //   const increase = item => {
-    //   if (!menu.includes (item)) {
-    //     item.counter = 1;
-    //     setMenu([...menu, item]);
-    //   } else {
-    //     item.counter += 1;
-    //     setMenu([...menu]);
-    //   }
-    // }
-    //   const decrease = item => {
-    //   if (item.counter === 1) {
-    //     deleteItem(item);
-    //   } else {
-    //     item.counter--;
-    //     setMenu([...menu]);
-    //   }
-    // }
+ 
 
   return (
     <main className={css(styles.main)}>
@@ -95,7 +75,6 @@ const Saloon = () => {
         <Button style={css(styles.button)} onClick={(e) => optionBurger(e.target.value)} children='Lanches'/>
       </div>
       <div className={css(styles.menu)}>
-        {/* map renderiza o menubtn e pra cada item ele retorna um btn com nome e preço */}
         {menu.map((el, index) => <MenuButton onClick={()=>setOrder(order.concat({item:el[0], price:el[1]}))}el={el} key={index}/>)}
       </div>
       <div className={css(styles.containerOrder)}>
@@ -110,9 +89,6 @@ const Saloon = () => {
                 <>
                   <p key={index}>{el.item} R${el.price},00</p>
                   <Button index={index} onClick={deleteItem} style={css(styles.delete)} children='🗑️'/>
-                  {/* <Button style={css(styles.add)} children={'-'} onClick={() => decrease(el)}/>
-                  {el.counter}
-                  <Button style={css(styles.add)} children={'+'} onClick={() => increase(el)}/> */}
                 </>))} 
             </div>
           </div>
@@ -134,13 +110,6 @@ const styles = StyleSheet.create({
   },
   btnMenu: {
     display: 'flex',
-    // display: 'flex',
-    // marginTop: '50px',
-    // alignItems: 'center',
-    // padding: '10px',
-    // position: 'fixed',
-    // top: '0',
-    // width: '100%',
   },
   menu: {
     flexWrap: 'wrap',
@@ -151,8 +120,6 @@ const styles = StyleSheet.create({
   button: {
     background: '#F2F2F2',
     borderRadius: '10px',
-    //width: '40%',
-    // height: '40%',
     margin: '0% 3% 2%',
     padding:'5px',
     fontFamily: 'Spectral SC',
@@ -196,18 +163,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-evenly',
   },
-  // add: {
-  //   color: '#0D0D0D',
-  //   fontWeight: 'bold',
-  //   backgroundColor: '#D97904',
-  //   borderColor: '#D97904',
-  //   borderRadius: '5px',
-  //   cursor: 'pointer',
-  //   margin: '3px',
-  //   width: '26px',
-  //   outline: 'none',
-  //   height: '26px'
-  // },
   delete: {
     borderStyle: 'none',
     backgroundColor: 'transparent',
