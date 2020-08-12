@@ -7,7 +7,7 @@ import { StyleSheet, css } from 'aphrodite';
 import firebase from '../firebase';
 import { Link,useHistory } from 'react-router-dom';
 import Swal  from 'sweetalert2';
-//import { queries } from '@testing-library/react';
+
 const Login = () => {
   const history = useHistory();
   const [email, setEmail] = useState('');
@@ -38,32 +38,26 @@ const Login = () => {
             history.push('/saloon');
           }
         })
-        .catch((error) => {
-          const err = error.code
-          if (err === 'auth/invalid-email') {
-            Swal.fire({
+      })
+      .catch((error) => {
+        const err = error.code
+            if (err === 'auth/wrong-password') {
+              Swal.fire({
                 title: 'Ops...',
-                text: 'E-mail inválido',
+                text: 'E-mail ou senha inválido',
                 icon: 'error',
                 confirmButtonText: 'OK'
               })
-          } else if (err === 'auth/wrong-password') {
+          } else if (err == 'auth/user-not-found') {
             Swal.fire({
                 title: 'Ops...',
-                text: 'Senha inválida',
+                text: 'Usuário não encontrado',
                 icon: 'error',
-                confirmButtonText: 'OK'
-              })
-          } else {
-            Swal.fire({
-              title: 'Ops...',
-              text: 'Algo deu errado',
-              icon: 'error',
-              confirmButtonText: 'OK'
-            })
-          }
+                confirmButtonText:'OK'
+              }) 
+          } 
         });
-      });
+     
     }
   }
   return (
@@ -99,12 +93,7 @@ const styles = StyleSheet.create({
     fontSize: '14px',
     background: '#F2F2F2',
     borderStyle: 'none',
-    outline: 'none'
-    //"@media (min-width: 360px)": {
-    //    width: "250px",
-    //    height: "30px",
-    //    fontSize: '24px',
-    //  }
+    outline: 'none',
   },
   button: {
     background: '#D97904',
@@ -118,11 +107,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Spectral SC',
     cursor: 'pointer',
     outline: 'none'
-    //"@media (max-width: 360px)": {
-    //    width: "200px",
-    //    height: "50px",
-    //    fontSize: '24px',
-    //  }
   },
   form: {
     fontSize: '18px',
@@ -138,11 +122,6 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     fontSize: '15px',
     color: '#F2F2F2',
-    //   "@media (min-width: 360px)": {
-    //    fontSize: '24px',
-    //    color: '#F2F2F2',
-    //     transition: '0.2s linear',
-    //  }
   },
   link: {
     fontFamily: 'Spectral SC',
@@ -154,16 +133,7 @@ const styles = StyleSheet.create({
     ':hover': {
       color: '#D97904',
       cursor: 'pointer'
-    //},
-    //"@media (min-width: 360px)": {
-    //    fontSize: '24px',
-    //    color: '#F2F2F2',
-    //     transition: '0.2s linear',
-    //     ':hover': {
-    //        color: '#D97904',
-    //        cursor: 'pointer'
-    //      },
-      }
+    }
 },
   footer: {
     fontFamily: 'Spectral SC',
