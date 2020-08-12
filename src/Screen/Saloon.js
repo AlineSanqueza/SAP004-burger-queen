@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Nav from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -50,7 +50,8 @@ const Saloon = () => {
       .add({
         customer,
         table,
-        order
+        order,
+        status: 'Preparando'
       }).then(
         Swal.fire({
           title: 'Pedido enviado com sucesso',
@@ -65,7 +66,6 @@ const Saloon = () => {
       order.splice(e.currentTarget.dataset.index, 1)
       setOrder([...order]);
     };
- 
 
   return (
     <main className={css(styles.main)}>
@@ -75,7 +75,7 @@ const Saloon = () => {
         <Button style={css(styles.button)} onClick={(e) => optionBurger(e.target.value)} children='Lanches'/>
       </div>
       <div className={css(styles.menu)}>
-        {menu.map((el, index) => <MenuButton onClick={()=>setOrder(order.concat({item:el[0], price:el[1]}))}el={el} key={index}/>)}
+        {menu.map((el, index) => <MenuButton onClick={()=>setOrder(order.concat({item:el[0], price:el[1]}))} el={el} key={index}/>)}
       </div>
       <div className={css(styles.containerOrder)}>
         <p className={css(styles.p)}>Resumo do pedido</p>
@@ -145,7 +145,8 @@ const styles = StyleSheet.create({
   p: {
     fontSize: '20px',
     color: 'black',
-    padding: '10px'
+    padding: '10px',
+    margin: '25px',
   },
   input: {
     borderRadius: '5px',

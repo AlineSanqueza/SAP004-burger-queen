@@ -25,12 +25,12 @@ const styles = StyleSheet.create({
   },
   nav: {
     background: '#0D0D0D',
+    margin: '20px'
   },
   li: {
     listStyle: 'none',
     display:'inline',
-    marginRight: '60px',
-    fontSize: '23px'
+    fontSize: '23px',
   },
   link: {
     textDecoration: 'none',

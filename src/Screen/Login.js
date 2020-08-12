@@ -48,7 +48,7 @@ const Login = () => {
                 icon: 'error',
                 confirmButtonText: 'OK'
               })
-          } else if (err == 'auth/user-not-found') {
+          } else if (err === 'auth/user-not-found') {
             Swal.fire({
                 title: 'Ops...',
                 text: 'Usuário não encontrado',
@@ -57,7 +57,6 @@ const Login = () => {
               }) 
           } 
         });
-     
     }
   }
   return (
