@@ -39,22 +39,33 @@ const Kitchen = () => {
   return (
     <main className={css(styles.main)}>
       <Nav/>
-      <section className={css(styles.title)}>Cozinha
+      <section>
+        <h4 className={css(styles.title)}>Cozinha</h4>
         {customer.map((doc, index) =>
           doc.status === 'Preparando' ? (
-            <div key={index}>
+            <div key={index} className={css(styles.div)}>
               <CardKitchen
                 key={index}
                 customer={doc.customer}
                 table={doc.table}
                 clientOrder={doc.order}
-                // clientOrderItem={doc.order.item}
-                // clientOrderPrice={doc.order.price}
+                status={doc.status}
               />
-              <Button onClick={() => updateStatus(doc)} children={'Pedido pronto'}/>
+              <Button style={css(styles.ready)} onClick={() => updateStatus(doc)} children={'Pronto'}/>
             </div>
           ) : null
         )}
+        {/* {customer.map((doc, index) =>
+          doc.status === 'Pronto' ? (
+            <CardKitchen
+                key={index}
+                customer={doc.customer}
+                table={doc.table}
+                clientOrder={doc.order}
+              />
+          )
+          : null
+          )} */}
       </section>
     </main>
   );
@@ -68,9 +79,33 @@ const styles = StyleSheet.create({
     fontSize:'18px'
   },
   title: {
+    fontFamily: 'Spectral SC',
     color: '#ccc',
     fontSize: '36px',
-    fontFamily: 'Roboto'
+    // fontFamily: 'Roboto',
+    padding: '30px'
+  },
+  div: {
+    background: '#ccc',
+    margin: '30px',
+    flexDirection: 'column',
+    padding: '10px',
+    borderRadius: '5px',
+    width: '20%'
+
+    // display: 'flex',
+  },
+  ready: {
+    background: '#227036',
+    color: '#F2F2F2',
+    borderRadius: '5px',
+    height: '40px',
+    fontSize: '20px',
+    borderStyle: 'none',
+    cursor: 'pointer',
+    margin: '25px',
+    padding: '5px',
+    outline: 'none',
   }
 });
 
