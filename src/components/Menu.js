@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
       color: '#0D0D0D',
     }
   }
-})
+});
 
 
 /*const styles = StyleSheet.create({

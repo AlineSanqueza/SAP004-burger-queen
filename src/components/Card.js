@@ -13,7 +13,7 @@ const CardKitchen = (props) => {
       <p>Status: {props.status}</p>
       <p>{props.time}</p>
       <div>
-        <Button title= "Pedido Pront"/>
+        <Button title= 'Pedido Pronto'/>
       </div>
     </section>
       // </div>

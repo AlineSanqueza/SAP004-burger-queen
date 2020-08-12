@@ -1,27 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
 import Nav from '../components/Navbar';
-//import Card from '../components/Card';
+import CardKitchen from '../components/Card';
+import Button from '../components/Button';
 import {StyleSheet,css} from 'aphrodite'
 
 const Kitchen = () => {
-  const orderKitchen =() =>{
-    console.log('funcinou?')
-    firebase.firestore().collection('orders').get()
-    .then((snapshot) => {
-      const customer = snapshot.data().id
-      const table = snapshot.data().table
-      console.log(customer,table)
-    })
-    console.log('funcinou?')
-  }
-
-  return (
-    <main className={css(styles.main)}>
-      <Nav/>
-      <div className={css(styles.tite)}>
-      <h1 >Cozinha</h1>
-      </div>
+    <main>
       {/*<div>
         {orders.map((ord)=>{
           < Card key={ord.id}
