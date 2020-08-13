@@ -54,7 +54,7 @@ const Login = () => {
                 text: 'Usuário não encontrado',
                 icon: 'error',
                 confirmButtonText:'OK'
-              }) 
+              })
           } 
         });
     }
@@ -73,7 +73,7 @@ const Login = () => {
       </form>
     </main>
   );
-  }
+}
 
 const styles = StyleSheet.create({
   main: {

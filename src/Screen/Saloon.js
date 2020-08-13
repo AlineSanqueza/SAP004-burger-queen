@@ -3,7 +3,6 @@ import Nav from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import MenuButton from '../components/Menu';
-import Delivery from './Delivery'
 import { Link } from 'react-router-dom';
 import firebase from '../firebase';
 import Swal  from 'sweetalert2';

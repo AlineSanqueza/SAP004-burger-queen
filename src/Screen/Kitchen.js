@@ -55,17 +55,6 @@ const Kitchen = () => {
             </div>
           ) : null
         )}
-        {/* {customer.map((doc, index) =>
-          doc.status === 'Pronto' ? (
-            <CardKitchen
-                key={index}
-                customer={doc.customer}
-                table={doc.table}
-                clientOrder={doc.order}
-              />
-          )
-          : null
-          )} */}
       </section>
     </main>
   );
@@ -82,7 +71,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Spectral SC',
     color: '#ccc',
     fontSize: '36px',
-    // fontFamily: 'Roboto',
     padding: '30px'
   },
   div: {
@@ -92,7 +80,6 @@ const styles = StyleSheet.create({
     padding: '10px',
     borderRadius: '5px',
     width: '20%'
-    // display: 'flex',
   },
   ready: {
     background: '#227036',
