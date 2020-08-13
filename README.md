@@ -61,15 +61,22 @@ Aplicação desenvolvida para funcionamento em tablet, para ser um Single Page A
 Ferramentas e bibliotecas utilizadas para essa aplicação: 
 
 \- [React](https://pt-br.reactjs.org/)
+
 \- [React-Router-Dom](https://reactrouter.com/web/guides/quick-start)
+
 \- [Aphrodite](https://github.com/Khan/aphrodite)
+
 \- [Firebase](https://firebase.google.com/?hl=pt-br)
+
 
 ## 4. Futuras Implementações
 
 \- Visualizar pedidos na ordem de chegada na tela de cozinha.
+
 \- Mostrar tempo de preparo e de entrega do pedido na tela.
+
 \- Deixar aplicação responsivo. 
+
 \- Implantar testes que cubram 100% de statements, functions, lines e branches.
 
 
