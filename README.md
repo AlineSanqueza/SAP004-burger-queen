@@ -24,11 +24,13 @@ Para acessar a aplicação, [Clique aqui](https://lab-burger-queen-81337.web.app
 Cozinha:
 
 kitchen@cozinha.com
+
 Senha: 12345678
 
 Salão: 
 
 hall@salao.com	
+
 Senha: 12345678
 
 ## 2. Protótipo 
