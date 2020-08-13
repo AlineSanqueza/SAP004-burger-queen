@@ -2,13 +2,13 @@
 
 ## Índice 
 
-1. [Resumo do Projeto](#resumo-do-projeto)
-2. [Protótipo](#prototipo)
-3. [Considerações Técnicas](#considerações-técnicas)
-3. [Futuras Implantações](#futuras-implantações)
+1. [Resumo do Projeto](#Resumo-do-Projeto)
+2. [Protótipo](#Prototipo)
+3. [Considerações Técnicas](#Considerações-Técnicas)
+3. [Futuras Implantações](#Futuras-Implantações)
 
 
-## 1. Resumo do Projeto
+## 1.Resumo do Projeto
 
 Para acessar a aplicação, [Clique aqui](https://lab-burger-queen-81337.web.app/)
 
@@ -38,19 +38,19 @@ simples, limpa e objetiva para fácil acesso e utilização do usuário.
 
 Tela de Login: 
 
-![Optional Text](public/images/Prototipo-Login.png)
+![Optional Text](public/src/images/Prototipo-Login.png)
 
 Tela de Pedidos:
 
-![Optional Text](public/images/Prototipo-Menu.png)
+![Optional Text](public/src/images/Prototipo-Menu.png)
 
 Tela de Cozinha: 
 
-![Optional Text](public/images/Prototipo-Cozinha.png)
+![Optional Text](public/src/images/Prototipo-Cozinha.png)
 
 Paleta de Cores:
 
-![Optional Text](public/images/paletadecores.jpeg)
+![Optional Text](public/src/images/paletadecores.jpeg)
 
 ## 3. Considerações Técnicas
 
