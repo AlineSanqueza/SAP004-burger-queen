@@ -40,7 +40,7 @@ simples, limpa e objetiva para fácil acesso e utilização do usuário.
 
 Tela de Login: 
 
-![](public/src/images/Login.png)
+![](public/src/images/logo-burger-queen.png)
 
 Tela de Pedidos:
 
