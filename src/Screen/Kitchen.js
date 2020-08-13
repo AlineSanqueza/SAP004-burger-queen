@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     padding: '10px',
     borderRadius: '5px',
-    width: '20%'
+    width: '20%',
+    display: 'inline-flex'
   },
   ready: {
     background: '#227036',
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     cursor: 'pointer',
     margin: '25px',
     padding: '5px',
-    outline: 'none',
+    outline: 'none'
   }
 });
 

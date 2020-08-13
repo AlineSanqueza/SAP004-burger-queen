@@ -83,14 +83,11 @@ const styles = StyleSheet.create({
   },
   nav: {
     background: '#0D0D0D',
-    margin: '20px',
+    margin: '20px'
   },
   li: {
     listStyle: 'none',
-    display:'inline',
-    fontSize: '23px',
-    display: 'flex',
-    justifyContent: 'flex-end'
+    fontSize: '23px'
   },
   link: {
     textDecoration: 'none',
@@ -109,7 +106,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     padding: '10px',
     borderRadius: '5px',
-    width: '20%'
+    width: '20%',
+    display: 'inline-flex'
   },
   ready: {
     background: '#227036',
@@ -121,7 +119,7 @@ const styles = StyleSheet.create({
     cursor: 'pointer',
     margin: '25px',
     padding: '5px',
-    outline: 'none',
+    outline: 'none'
   }
 });
 

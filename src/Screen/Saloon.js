@@ -79,13 +79,13 @@ const Saloon = () => {
       <div className={css(styles.menu)}>
         {menu.map((el, index) => <MenuButton onClick={()=>setOrder(order.concat({item:el[0], price:el[1]}))} el={el} key={index}/>)}
       </div>
-      <div className={css(styles.containerOrder)}>
+      <section className={css(styles.containerOrder)}>
         <p className={css(styles.p)}>Resumo do pedido</p>
         <div className={css(styles.position)}>
           <Input style={css(styles.input)} onChange={(e)=>setCustomer(e.target.value)} type='text' title='Cliente'/>
           <Input style={css(styles.input)} onChange={(e)=>setTable(e.target.value)} type='number' title='Mesa'/>
         </div>
-          <div className={css(styles.position)}>
+          <section className={css(styles.position)}>
             <div>
               {order.map((el, index) => (
                 <>
@@ -93,12 +93,12 @@ const Saloon = () => {
                   <Button index={index} onClick={deleteItem} style={css(styles.delete)} children='🗑️'/>
                 </>))} 
             </div>
-          </div>
+          </section>
           <div className={css(styles.position)}>
             <p className={css(styles.p)}> Total: R$ {order.reduce((acc, cur) => acc + cur.price, 0)},00</p>
             <Button style={css(styles.send)} onClick={addOrder} children='Enviar pedido'/>
           </div>
-      </div>
+      </section>
     </main>
   );
 }
@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
     height: '100vh',
     fontSize:'18px'
   },
-  
   btnMenu: {
     display: 'flex',
     justifyContent: 'flex-end'
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     marginTop: '10px',
-    borderRadius: '10px',
+    borderRadius: '10px'
   },
   button: {
     background: '#F2F2F2',
@@ -134,8 +133,7 @@ const styles = StyleSheet.create({
     outline: 'none',
     ':active': {
     background: '#D97904',
-    },
-    
+    }
   },
   link: {
     textDecoration: 'none',
@@ -157,13 +155,13 @@ const styles = StyleSheet.create({
     borderRadius: '10px',
     marginLeft: '30%',
     marginTop: '30px',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   p: {
     fontSize: '20px',
     color: 'black',
     padding: '10px',
-    margin: '25px',
+    margin: '25px'
   },
   input: {
     borderRadius: '5px',
@@ -175,11 +173,11 @@ const styles = StyleSheet.create({
     outline: 'none'
   },
   order: {
-    fontSize: '20px',
+    fontSize: '20px'
   },
   position: {
     display: 'flex',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-evenly'
   },
   delete: {
     borderStyle: 'none',

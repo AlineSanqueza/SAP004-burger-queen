@@ -160,13 +160,13 @@ const styles = StyleSheet.create({
     display:'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '5px',
+    padding: '5px'
   },
   p: {
     fontFamily: 'Spectral SC',
     fontWeight: 'normal',
     fontSize: '15px',
-    color: '#F2F2F2',
+    color: '#F2F2F2'
   },
   link: {
     fontFamily: 'Spectral SC',
@@ -177,8 +177,8 @@ const styles = StyleSheet.create({
     transition: '0.5s linear',
     ':hover': {
       color: '#D97904',
-      cursor: 'pointer',
-    },
+      cursor: 'pointer'
+    }
   },
   footer: {
     fontFamily: 'Spectral SC',

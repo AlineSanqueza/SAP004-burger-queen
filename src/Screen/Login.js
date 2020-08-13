@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     height: '100vh'
   },
   img: {
-    margin: '40px',
+    margin: '40px'
   },
   input: {
     borderRadius: '10px',
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     fontSize: '14px',
     background: '#F2F2F2',
     borderStyle: 'none',
-    outline: 'none',
+    outline: 'none'
   },
   button: {
     background: '#D97904',
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Spectral SC',
     fontWeight: 'normal',
     fontSize: '15px',
-    color: '#F2F2F2',
+    color: '#F2F2F2'
   },
   link: {
     fontFamily: 'Spectral SC',
