@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
+import { Link } from 'react-router-dom'
 import Nav from '../components/Navbar';
 import CardKitchen from '../components/Card';
 import Button from '../components/Button';
@@ -40,9 +41,16 @@ const Kitchen = () => {
     <main className={css(styles.main)}>
       <Nav/>
       <section>
-        <h4 className={css(styles.title)}>Cozinha</h4>
+      <nav className={css(styles.nav)}>
+        <ul>
+          <li className={css(styles.li)}>
+          <Link to='/saloon' className={css(styles.link)}>Voltar para o Salão</Link>
+          </li>
+        </ul>
+      </nav>
+        <h4 className={css(styles.title)}> Pedidos Prontos</h4>
         {customer.map((doc, index) =>
-          doc.status === 'Preparando' ? (
+          doc.status === 'Pronto' ? (
             <div key={index} className={css(styles.div)}>
               <CardKitchen
                 key={index}
@@ -51,21 +59,10 @@ const Kitchen = () => {
                 clientOrder={doc.order}
                 status={doc.status}
               />
-              <Button style={css(styles.ready)} onClick={() => updateStatus(doc)} children={'Pronto'}/>
+              <Button style={css(styles.ready)} onClick={() => updateStatus(doc)} children={'Pedido Entregue'}/>
             </div>
           ) : null
         )}
-        {/* {customer.map((doc, index) =>
-          doc.status === 'Pronto' ? (
-            <CardKitchen
-                key={index}
-                customer={doc.customer}
-                table={doc.table}
-                clientOrder={doc.order}
-              />
-          )
-          : null
-          )} */}
       </section>
     </main>
   );
@@ -82,8 +79,30 @@ const styles = StyleSheet.create({
     fontFamily: 'Spectral SC',
     color: '#ccc',
     fontSize: '36px',
-    // fontFamily: 'Roboto',
+    
     padding: '30px'
+  },
+  nav: {
+    background: '#0D0D0D',
+    margin: '20px',
+  },
+  li: {
+    listStyle: 'none',
+    display:'inline',
+    fontSize: '23px',
+    display: 'flex',
+    justifyContent: 'flex-end'
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#D97904',
+    fontFamily: 'Spectral SC',
+    cursor: 'pointer',
+    transition: '1s linear',
+    ':hover': {
+      color: '#F2F2F2',
+      cursor: 'pointer'
+    }
   },
   div: {
     background: '#ccc',
@@ -99,7 +118,7 @@ const styles = StyleSheet.create({
     background: '#227036',
     color: '#F2F2F2',
     borderRadius: '5px',
-    height: '40px',
+    height: '50px',
     fontSize: '20px',
     borderStyle: 'none',
     cursor: 'pointer',
