@@ -52,7 +52,7 @@ Tela de Cozinha:
 
 Paleta de Cores:
 
-![Optional Text](public/src/images/paletadecores.jpeg)
+![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/cores.jpeg)
 
 ## 3. Considerações Técnicas
 
