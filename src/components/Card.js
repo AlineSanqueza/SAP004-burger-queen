@@ -24,16 +24,15 @@ const CardKitchen = (props) => {
 const styles = StyleSheet.create({
   p: {
     fontFamily: 'Rubik',
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: '#0D0D0D',
     fontSize: '18px'
   },
   doing: {
     color: 'red',
     fontFamily: 'Rubik',
-    fontWeight: "bold",
+    fontWeight: 'bold',
   }
-
-})
+});
 
 export default CardKitchen;
