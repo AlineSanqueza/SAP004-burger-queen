@@ -44,11 +44,11 @@ Tela de Login:
 
 Tela de Pedidos:
 
-![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/register.png)
+![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/menu.png)
 
 Tela de Cozinha: 
 
-![Optional Text](public/src/images/Prototipo-Cozinha.png)
+![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/cozinha.png)
 
 Paleta de Cores:
 
