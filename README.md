@@ -40,7 +40,7 @@ simples, limpa e objetiva para fácil acesso e utilização do usuário.
 
 Tela de Login: 
 
-![](public/src/images/logo-burger-queen.png)
+![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/Login.png)
 
 Tela de Pedidos:
 
