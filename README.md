@@ -40,7 +40,7 @@ simples, limpa e objetiva para fácil acesso e utilização do usuário.
 
 Tela de Login: 
 
-![Optional Text](public/src/images/Prototipo-Login.png)
+![Optional Text](public/src/images/Login.png)
 
 Tela de Pedidos:
 
