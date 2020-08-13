@@ -44,7 +44,7 @@ Tela de Login:
 
 Tela de Pedidos:
 
-![Optional Text](public/src/images/Prototipo-Menu.png)
+![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/register.png)
 
 Tela de Cozinha: 
 
