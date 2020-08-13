@@ -81,4 +81,4 @@ Ferramentas e bibliotecas utilizadas para essa aplicação:
 
 
 
-*** Projeto realizado por Aline Souza e Marcella Teliceski ***
+***Projeto realizado por Aline Souza e Marcella Teliceski***
