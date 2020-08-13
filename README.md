@@ -21,17 +21,11 @@ Para acessar a aplicação, [Clique aqui](https://lab-burger-queen-81337.web.app
 
  Para acessar a aplicação, pode-se utilizar as contas: 
 
-Cozinha:
+*Cozinha: kitchen@cozinha.com*
 
-kitchen@cozinha.com
+*Salão: hall@salao.com*	
 
-Senha: 12345678
-
-Salão: 
-
-hall@salao.com	
-
-Senha: 12345678
+***Senha de ambos: 12345678***
 
 ## 2. Protótipo 
 
