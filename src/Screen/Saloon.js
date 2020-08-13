@@ -3,6 +3,8 @@ import Nav from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import MenuButton from '../components/Menu';
+import Delivery from './Delivery'
+import { Link } from 'react-router-dom';
 import firebase from '../firebase';
 import Swal  from 'sweetalert2';
 import { StyleSheet, css } from 'aphrodite';
@@ -73,6 +75,7 @@ const Saloon = () => {
       <div className={css(styles.bntMenu)}>
         <Button style={css(styles.button)} onClick={(e) => optionBreakfast(e.target.value)} children='Café da manhã'/>
         <Button style={css(styles.button)} onClick={(e) => optionBurger(e.target.value)} children='Lanches'/>
+        <Link to='/delivery' className={css(styles.link)}>Pedidos Prontos</Link>
       </div>
       <div className={css(styles.menu)}>
         {menu.map((el, index) => <MenuButton onClick={()=>setOrder(order.concat({item:el[0], price:el[1]}))} el={el} key={index}/>)}
@@ -108,8 +111,10 @@ const styles = StyleSheet.create({
     height: '100vh',
     fontSize:'18px'
   },
+  
   btnMenu: {
     display: 'flex',
+    justifyContent: 'flex-end'
   },
   menu: {
     flexWrap: 'wrap',
@@ -130,8 +135,21 @@ const styles = StyleSheet.create({
     outline: 'none',
     ':active': {
     background: '#D97904',
+    },
+    
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#D97904',
+    fontFamily: 'Spectral SC',
+    fontSize:'18px',
+    cursor: 'pointer',
+    transition: '1s linear',
+    ':hover': {
+      color: '#F2F2F2',
+      cursor: 'pointer'
     }
-  },  
+  },
   containerOrder: {
     background: '#ccc',
     width: '60%',
