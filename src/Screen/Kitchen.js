@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
     padding: '10px',
     borderRadius: '5px',
     width: '20%'
-
     // display: 'flex',
   },
   ready: {
