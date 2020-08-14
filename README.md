@@ -12,11 +12,11 @@
 
 Para acessar a aplicação, [Clique aqui](https://lab-burger-queen-81337.web.app/)
 
- Desenvolvido uma aplicação para gerenciar os pedidos de um restaurante, assim quando o pedido é finalizado 
+ Aplicação desenvolvida para gerenciar os pedidos de um restaurante, assim quando o pedido é finalizado 
  pelo garçom é possivel encaminhar para a cozinha, onde será preparado e após finalizado o pedido será encaminhado
- para o salão para ser realizado a entrega.
+ para o salão para ser realizada a entrega.
 
- Dessa forma, terão dois usuários que irão utilizar essa aplicação: o garçom e o cozinheiro,onde cada um em sua 
+ Dessa forma, terão dois usuários que irão utilizar essa aplicação: o garçom e o cozinheiro, onde cada um em sua 
  respectiva tela será possível ver os pedidos dos clientes.
 
  Para acessar a aplicação, pode-se utilizar as contas: 
@@ -29,24 +29,23 @@ Para acessar a aplicação, [Clique aqui](https://lab-burger-queen-81337.web.app
 
 ## 2. Protótipo 
 
-Para o desenvolvimento dessa aplicação,foi realizado o protótipo para compreender as necessidades dos usuários,pensando em uma layout
-simples, limpa e objetiva para fácil acesso e utilização do usuário. 
+Para o desenvolvimento dessa aplicação, foi realizado o protótipo para compreender as necessidades dos usuários, pensando em um layout simples, limpo e objetivo para fácil acesso e utilização do usuário. 
 
 Tela de Login: 
 
-![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/login.png)
+![Tela de login](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/login.png)
 
 Tela de Pedidos:
 
-![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/menu.png)
+![Tela de pedidos](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/menu.png)
 
-Tela de Cozinha: 
+Tela da Cozinha: 
 
-![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/cozinha.png)
+![Tela da cozinha](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/cozinha.png)
 
 Paleta de Cores:
 
-![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/cores.jpeg)
+![Paleta de cores](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/cores.jpeg)
 
 ## 3. Considerações Técnicas
 
@@ -65,11 +64,11 @@ Ferramentas e bibliotecas utilizadas para essa aplicação:
 
 ## 4. Futuras Implementações
 
-\- Visualizar pedidos na ordem de chegada na tela de cozinha.
+\- Visualizar pedidos na ordem de chegada na tela da cozinha.
 
 \- Mostrar tempo de preparo e de entrega do pedido na tela.
 
-\- Deixar aplicação responsivo. 
+\- Deixar aplicação responsiva. 
 
 \- Implantar testes que cubram 100% de statements, functions, lines e branches.
 
