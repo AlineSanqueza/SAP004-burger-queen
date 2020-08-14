@@ -1,68 +1,78 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Burger Queen 
 
-## Available Scripts
+## Índice 
 
-In the project directory, you can run:
+1. [Resumo do Projeto](#Resumo-do-Projeto)
+2. [Protótipo](#Prototipo)
+3. [Considerações Técnicas](#Considerações-Técnicas)
+3. [Futuras Implantações](#Futuras-Implantações)
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 1.Resumo do Projeto
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Para acessar a aplicação, [Clique aqui](https://lab-burger-queen-81337.web.app/)
 
-### `npm test`
+ Desenvolvido uma aplicação para gerenciar os pedidos de um restaurante, assim quando o pedido é finalizado 
+ pelo garçom é possivel encaminhar para a cozinha, onde será preparado e após finalizado o pedido será encaminhado
+ para o salão para ser realizado a entrega.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ Dessa forma, terão dois usuários que irão utilizar essa aplicação: o garçom e o cozinheiro,onde cada um em sua 
+ respectiva tela será possível ver os pedidos dos clientes.
 
-### `npm run build`
+ Para acessar a aplicação, pode-se utilizar as contas: 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+*Cozinha: kitchen@cozinha.com*
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+*Salão: hall@salao.com*	
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+***Senha de ambos: 12345678***
 
-### `npm run eject`
+## 2. Protótipo 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Para o desenvolvimento dessa aplicação,foi realizado o protótipo para compreender as necessidades dos usuários,pensando em uma layout
+simples, limpa e objetiva para fácil acesso e utilização do usuário. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Tela de Login: 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/login.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Tela de Pedidos:
 
-## Learn More
+![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/menu.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Tela de Cozinha: 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/cozinha.png)
 
-### Code Splitting
+Paleta de Cores:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![Optional Text](https://github.com/Marcellita/SAP004-burger-queen-1/blob/create-readme/src/images/cores.jpeg)
 
-### Analyzing the Bundle Size
+## 3. Considerações Técnicas
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Aplicação desenvolvida para funcionamento em tablet, para ser um Single Page App e utilizando React. 
 
-### Making a Progressive Web App
+Ferramentas e bibliotecas utilizadas para essa aplicação: 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+\- [React](https://pt-br.reactjs.org/)
 
-### Advanced Configuration
+\- [React-Router-Dom](https://reactrouter.com/web/guides/quick-start)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+\- [Aphrodite](https://github.com/Khan/aphrodite)
 
-### Deployment
+\- [Firebase](https://firebase.google.com/?hl=pt-br)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+## 4. Futuras Implementações
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+\- Visualizar pedidos na ordem de chegada na tela de cozinha.
+
+\- Mostrar tempo de preparo e de entrega do pedido na tela.
+
+\- Deixar aplicação responsivo. 
+
+\- Implantar testes que cubram 100% de statements, functions, lines e branches.
+
+
+
+***Projeto realizado por Aline Souza e Marcella Teliceski***
